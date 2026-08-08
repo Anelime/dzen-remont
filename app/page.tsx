@@ -178,7 +178,7 @@ export default function Home() {
             <p className="eyebrow">Как работаем</p>
             <h2>Пять этапов: от осмотра до оплаты по акту</h2>
           </div>
-          <ol className="process-list">
+          <ol className="process-list" role="list">
             {[
               ["Осмотр объекта", "Получаем планировку или проект, уточняем задачу и осматриваем помещение."],
               ["Смета", "Перечисляем работы, их стоимость и последовательность."],
@@ -187,8 +187,11 @@ export default function Home() {
               ["Приёмка и оплата", "Заказчик принимает этап по акту и после этого оплачивает его."],
             ].map(([title, text], index) => (
               <li key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div><h3>{title}</h3><p>{text}</p></div>
+                <span className="process-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{title}</h3>
+                <p>{text}</p>
               </li>
             ))}
           </ol>
@@ -225,8 +228,8 @@ export default function Home() {
             <p className="eyebrow">Предварительный расчёт</p>
             <h2>Калькулятор покажет предварительный ориентир по площади</h2>
             <p>
-              Выберите вид ремонта и площадь; статус дизайн-проекта можно добавить
-              по желанию. Квиз покажет расчёт по стартовой цене.
+              Два шага: выберите вид ремонта и укажите площадь. Телефон вводить
+              не нужно.
             </p>
           </div>
           <LeadCalculator />
