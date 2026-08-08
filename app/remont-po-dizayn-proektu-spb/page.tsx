@@ -7,7 +7,7 @@ import { company, siteUrl } from "../site-data";
 export const metadata: Metadata = {
   title: "Ремонт квартиры по дизайн-проекту в СПб | НЕВА-ремонт",
   description:
-    "Реализация ремонта по готовому дизайн-проекту: сверка чертежей, сложных узлов, инженерных решений и этапов работ.",
+    "Ремонт квартиры по готовому дизайн-проекту в Санкт-Петербурге: чертежи, инженерные решения, сложные узлы и расчёт по площади.",
   alternates: { canonical: `${siteUrl}/remont-po-dizayn-proektu-spb` },
 };
 
@@ -18,29 +18,31 @@ export default function Page() {
       <main>
         <section className="service-hero section">
           <div>
-            <Link className="eyebrow back-link" href="/">
+            <Link className="eyebrow back-link" href="/#services">
               ← Все направления
             </Link>
-            <h1>Ремонт по дизайн-проекту без решений «на глаз»</h1>
+            <h1>Ремонт квартиры по дизайн-проекту в Санкт-Петербурге</h1>
             <p className="hero-copy">
-              До сметы сверим комплект чертежей, инженерные решения и сложные
-              узлы. По ходу работ спорные места согласуются до исполнения.
+              Перед сметой компания сверяет чертежи, инженерные решения и
+              сложные узлы. Недостающие решения нужно согласовать до начала
+              соответствующего этапа.
             </p>
             <div className="hero-actions">
               <a className="button" href={company.telegram}>
-                Отправить проект
+                Открыть чат в Telegram
               </a>
               <a className="button button-ghost" href="#calculator">
-                Получить ориентир
+                Перейти к расчёту
               </a>
             </div>
+            <p className="microcopy">Дизайн-проект нужно прикрепить и отправить в чате.</p>
           </div>
           <aside className="service-hero-card">
             <span>Перед началом</span>
             <strong>Чертежи → узлы → смета → календарный план</strong>
             <p>
-              Если каких-то чертежей не хватает, это станет видно до старта
-              соответствующего этапа.
+              До договора нужно уточнить, кто проверяет комплектность проекта и
+              как стороны согласуют недостающие решения.
             </p>
           </aside>
         </section>
@@ -56,4 +58,3 @@ export default function Page() {
     </>
   );
 }
-

@@ -17,10 +17,12 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /<html lang="ru"/i);
-  assert.match(html, /Ремонт под ключ/);
+  assert.match(html, /Ремонт квартир под ключ/);
   assert.match(html, /Предварительный расчёт/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /НЕВА-ремонт/);
+  assert.match(html, /по данным компании/i);
+  assert.doesNotMatch(html, /фиксированная смета|безупречное качество|ремонт мечты/i);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });
 

@@ -8,8 +8,8 @@ export type ServiceData = (typeof services)[number];
 
 export function serviceMetadata(service: ServiceData): Metadata {
   return {
-    title: `${service.title} в Санкт-Петербурге — цена за м² | НЕВА-ремонт`,
-    description: `${service.description} ${service.priceLabel}. Договор, поэтапная приёмка и фотоотчёты. Предварительный расчёт по площади.`,
+    title: `${service.title} в Санкт-Петербурге — ${service.priceLabel} | НЕВА-ремонт`,
+    description: `${service.title} в Санкт-Петербурге. Работы ${service.priceLabel} по данным компании. Расчёт по площади и обсуждение осмотра.`,
     alternates: { canonical: `${siteUrl}/${service.slug}` },
   };
 }
@@ -27,13 +27,6 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
       telephone: company.phone,
       url: siteUrl,
     },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      price: service.price,
-      unitText: "м²",
-      description: "Стартовая стоимость работ. Итоговая смета после осмотра.",
-    },
   };
 
   return (
@@ -42,7 +35,7 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
       <main>
         <section className="service-hero section">
           <div>
-            <Link className="eyebrow back-link" href="/">
+            <Link className="eyebrow back-link" href="/#services">
               ← Все направления
             </Link>
             <h1>{service.title} в Санкт-Петербурге</h1>
@@ -52,12 +45,15 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
                 {service.cta}
               </a>
               <a className="button button-ghost" href={company.telegram}>
-                Отправить планировку
+                Открыть чат в Telegram
               </a>
             </div>
+            <p className="microcopy">
+              Планировку или фотографии нужно прикрепить и отправить в чате.
+            </p>
           </div>
           <aside className="service-hero-card">
-            <span>Стартовая стоимость</span>
+            <span>Работы — по данным компании</span>
             <strong>{service.priceLabel}</strong>
             <p>{service.audience}</p>
           </aside>
@@ -65,15 +61,15 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
 
         <section className="section split-section">
           <div>
-            <p className="eyebrow">Что входит</p>
-            <h2>Сначала состав работ, затем смета и календарный план</h2>
+            <p className="eyebrow">Как компания описывает работу</p>
+            <h2>Пять этапов — от осмотра до приёмки</h2>
           </div>
           <ol className="clean-list numbered-list">
-            <li>Осмотр объекта и проверка исходных данных</li>
+            <li>Осмотр объекта и изучение планировки или проекта</li>
             <li>Согласование работ, материалов и проектных решений</li>
-            <li>Подробная смета и фиксация условий в договоре</li>
-            <li>Выполнение и поэтапная приёмка по актам</li>
-            <li>Фото- и видеоотчёты по ходу ремонта</li>
+            <li>Смета и условия договора</li>
+            <li>Работы по этапам и фото- или видеоотчёты</li>
+            <li>Приёмка этапа по акту и оплата</li>
           </ol>
         </section>
 
@@ -95,16 +91,16 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
         <section className="section" id="calculator">
           <div className="section-heading">
             <p className="eyebrow">Расчёт</p>
-            <h2>Получите ориентир для вашей площади</h2>
-            <p>Детали можно сразу отправить Евгению в удобный мессенджер.</p>
+            <h2>Калькулятор посчитает работы по стартовой цене</h2>
+            <p>Для сметы нужен осмотр; здесь достаточно выбрать тип ремонта и площадь.</p>
           </div>
-          <LeadCalculator compact />
+          <LeadCalculator compact initialServiceSlug={service.slug} />
         </section>
 
         <section className="section faq-grid">
           <div>
             <p className="eyebrow">До начала работ</p>
-            <h2>Что стоит уточнить</h2>
+            <h2>Смета, оплата и отчёты</h2>
           </div>
           <div>
             {faq.slice(0, 3).map((item) => (

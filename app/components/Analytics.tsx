@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 declare global {
   interface Window {
@@ -104,16 +105,17 @@ export function AnalyticsConsent() {
   if (!visible) return null;
   return (
     <aside className="consent" aria-label="Настройки аналитики">
+      <strong>Аналитика сайта</strong>
       <p>
-        Мы используем аналитику, чтобы улучшать сайт и рекламу. Без согласия
-        необязательные счётчики не загружаются.
+        С разрешения загрузим счётчики посещений и рекламы. Условия описаны в
+        <Link href="/privacy"> политике обработки данных</Link>.
       </p>
       <div className="consent-actions">
         <button className="button button-small" onClick={() => choose("granted")}>
-          Разрешить
+          Разрешить аналитику
         </button>
         <button className="text-button" onClick={() => choose("denied")}>
-          Только необходимое
+          Продолжить без аналитики
         </button>
       </div>
     </aside>

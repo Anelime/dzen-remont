@@ -6,9 +6,9 @@ import { Footer, Header } from "../../components/SiteShell";
 import { siteUrl } from "../../site-data";
 
 export const metadata: Metadata = {
-  title: "Ремонт квартиры 78 м² в ЖК Neva Haus | НЕВА-ремонт",
+  title: "Ремонт квартиры в ЖК Neva Haus | НЕВА-ремонт",
   description:
-    "Кейс капитального ремонта двухкомнатной квартиры 78 м² в ЖК Neva Haus: перегородки, стяжка, инженерия, малярные и плиточные работы.",
+    "Кейс ремонта квартиры в ЖК Neva Haus: перегородки, стяжка, электрика, сантехника, малярные и плиточные работы.",
   alternates: { canonical: `${siteUrl}/projects/neva-haus` },
 };
 
@@ -28,9 +28,10 @@ export default function Page() {
             <Link className="eyebrow back-link" href="/#projects">← Все проекты</Link>
             <h1>Капитальный ремонт квартиры в ЖК Neva Haus</h1>
             <p className="hero-copy">
-              Двухкомнатная квартира 78 м²: от устройства стяжки и новых
-              перегородок до инженерных, плиточных и малярных работ.
+              В опубликованной карточке проекта указаны стяжка, новые
+              перегородки, электрика, сантехника, плиточные и малярные работы.
             </p>
+            <p className="microcopy">Площадь и число комнат указаны по карточке проекта компании.</p>
           </div>
           <dl className="case-facts">
             <div><dt>Площадь</dt><dd>78 м²</dd></div>
@@ -46,7 +47,7 @@ export default function Page() {
         <section className="section split-section">
           <div>
             <p className="eyebrow">Состав работ</p>
-            <h2>Что заявлено в карточке проекта</h2>
+            <h2>Что компания перечисляет в карточке проекта</h2>
           </div>
           <ul className="clean-list">
             <li>Стяжка и выравнивание пола</li>
@@ -58,8 +59,8 @@ export default function Page() {
           </ul>
         </section>
         <section className="section" id="calculator">
-          <div className="section-heading"><p className="eyebrow">Похожий объект</p><h2>Рассчитайте ориентир для своей площади</h2></div>
-          <LeadCalculator compact />
+          <div className="section-heading"><p className="eyebrow">Новостройка</p><h2>Рассчитайте работы по площади квартиры</h2></div>
+          <LeadCalculator compact initialServiceSlug="remont-kvartir-v-novostroyke-spb" />
         </section>
       </main>
       <Footer />

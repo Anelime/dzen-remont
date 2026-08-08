@@ -4,25 +4,23 @@ import { useMemo, useState } from "react";
 import { services } from "../site-data";
 import { trackEvent } from "./Analytics";
 
-export default function LeadCalculator({ compact = false }: { compact?: boolean }) {
-  const [serviceSlug, setServiceSlug] = useState(services[0].slug);
+export default function LeadCalculator({
+  compact = false,
+  initialServiceSlug = services[0].slug,
+}: {
+  compact?: boolean;
+  initialServiceSlug?: string;
+}) {
+  const [serviceSlug, setServiceSlug] = useState(initialServiceSlug);
   const [area, setArea] = useState(70);
-  const [project, setProject] = useState("Готов");
-  const [accepted, setAccepted] = useState(false);
-  const [error, setError] = useState("");
+  const [project, setProject] = useState("Проект готов");
 
   const service = services.find((item) => item.slug === serviceSlug) ?? services[0];
   const estimate = useMemo(() => service.price * area, [service.price, area]);
   const formatter = new Intl.NumberFormat("ru-RU");
 
   function contact(channel: "whatsapp" | "telegram") {
-    if (!accepted) {
-      setError("Подтвердите согласие на обработку данных.");
-      trackEvent("form_validation_error", { field: "privacy_consent" });
-      return;
-    }
-    setError("");
-    const message = `Здравствуйте! Хочу уточнить расчёт ремонта. Объект: ${service.short}. Площадь: ${area} м². Дизайн-проект: ${project}. Ориентир на сайте: от ${formatter.format(estimate)} ₽.`;
+    const message = `Здравствуйте! Хочу обсудить ремонт. Тип работ: ${service.title.toLowerCase()}. Площадь: ${area} м². Дизайн-проект: ${project.toLowerCase()}. Расчёт по стартовой цене на сайте: от ${formatter.format(estimate)} ₽.`;
     trackEvent("calculator_submit_success", {
       property_type: service.short,
       area_range: area,
@@ -40,7 +38,7 @@ export default function LeadCalculator({ compact = false }: { compact?: boolean 
     <div className={`calculator ${compact ? "calculator-compact" : ""}`}>
       <div className="calculator-controls">
         <label>
-          Тип объекта
+          Тип ремонта
           <select
             value={serviceSlug}
             onChange={(event) => {
@@ -50,7 +48,7 @@ export default function LeadCalculator({ compact = false }: { compact?: boolean 
           >
             {services.map((item) => (
               <option key={item.slug} value={item.slug}>
-                {item.short}
+                {item.title}
               </option>
             ))}
           </select>
@@ -67,42 +65,34 @@ export default function LeadCalculator({ compact = false }: { compact?: boolean 
           />
         </label>
         <label>
-          Дизайн-проект
+          Статус дизайн-проекта
           <select value={project} onChange={(event) => setProject(event.target.value)}>
-            <option>Готов</option>
-            <option>В процессе</option>
-            <option>Нет</option>
+            <option>Проект готов</option>
+            <option>Проект в работе</option>
+            <option>Проекта нет</option>
           </select>
         </label>
       </div>
       <div className="estimate" aria-live="polite">
-        <span>Предварительный ориентир работ</span>
+        <span>Расчёт по стартовой цене</span>
         <strong>от {formatter.format(estimate)} ₽</strong>
         <p>
-          Это не смета. Точная стоимость зависит от состояния объекта, состава
-          работ и проектных решений.
+          Калькулятор умножает площадь на начальную цену для выбранного ремонта.
+          Смета зависит от состояния объекта, состава работ и проектных решений.
         </p>
       </div>
-      <label className="checkbox-row">
-        <input
-          type="checkbox"
-          checked={accepted}
-          onChange={(event) => setAccepted(event.target.checked)}
-        />
-        <span>
-          Согласен с <a href="/privacy">политикой обработки данных</a>
-        </span>
-      </label>
-      {error && <p className="form-error">{error}</p>}
       <div className="calculator-actions">
         <button className="button" onClick={() => contact("whatsapp")}>
-          Уточнить в WhatsApp
+          Открыть расчёт в WhatsApp
         </button>
         <button className="button button-ghost" onClick={() => contact("telegram")}>
-          Написать в Telegram
+          Открыть чат в Telegram
         </button>
       </div>
+      <p className="microcopy">
+        WhatsApp откроется с готовым сообщением — проверьте его и нажмите
+        «Отправить». В Telegram параметры нужно написать в чате.
+      </p>
     </div>
   );
 }
-

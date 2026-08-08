@@ -25,7 +25,7 @@ export function Header() {
           {company.phone}
         </TrackedLink>
         <Link className="button button-small" href="/#calculator">
-          Рассчитать
+          К расчёту
         </Link>
       </div>
     </header>
@@ -53,15 +53,14 @@ export function Footer() {
       <div>
         <h3>Связаться</h3>
         <a href={company.phoneHref}>{company.phone}</a>
-        <a href={company.telegram}>Telegram</a>
-        <a href={company.whatsapp}>WhatsApp</a>
+        <a href={company.telegram}>Открыть чат в Telegram</a>
+        <a href={company.whatsapp}>Открыть чат в WhatsApp</a>
       </div>
       <div>
         <h3>Документы</h3>
         <Link href="/privacy">Политика обработки данных</Link>
         <p className="footnote">
-          Цены на сайте — предварительный ориентир и не являются публичной
-          офертой.
+          Цены на сайте указаны для ориентира и не являются публичной офертой.
         </p>
       </div>
     </footer>

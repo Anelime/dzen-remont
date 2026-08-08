@@ -9,7 +9,7 @@ import { cases, company, faq, services, siteUrl } from "./site-data";
 export const metadata: Metadata = {
   title: "Ремонт квартир под ключ в Санкт-Петербурге | НЕВА-ремонт",
   description:
-    "Капитальный ремонт квартир и коммерческих помещений в Санкт-Петербурге. Фиксированная смета, поэтапная приёмка, фотоотчёты. Стоимость от 28 000 ₽/м² для новостройки.",
+    "Ремонт квартир и коммерческих помещений в Санкт-Петербурге. Расчёт по площади; цены для новостройки от 28 000 ₽/м² по данным компании.",
   alternates: { canonical: siteUrl },
 };
 
@@ -20,7 +20,6 @@ export default function Home() {
     name: company.name,
     url: siteUrl,
     telephone: company.phone,
-    founder: { "@type": "Person", name: company.leader },
     areaServed: { "@type": "City", name: "Санкт-Петербург" },
     knowsAbout: [
       "ремонт квартир",
@@ -47,30 +46,30 @@ export default function Home() {
           <div className="hero-content">
             <p className="eyebrow">Санкт-Петербург · жилые и коммерческие объекты</p>
             <h1>
-              Ремонт под ключ — <em>с понятной сметой</em> и поэтапной приёмкой
+              Ремонт квартир под ключ <em>в Санкт-Петербурге</em>
             </h1>
             <p className="hero-copy">
-              От демонтажа и инженерных работ до установки сантехники, света,
-              мебели и техники. Стоимость работ — от 28 000 ₽/м² для новостройки
-              и от 45 000 ₽/м² для старого фонда.
+              На текущем сайте компании указаны цены от 28 000 ₽/м² для
+              новостройки и от 45 000 ₽/м² для старого фонда. Там же описан
+              порядок: осмотр, смета, работы по этапам и оплата после акта.
             </p>
             <div className="hero-actions">
               <a className="button" href="#calculator">
-                Получить предварительный расчёт
+                Рассчитать по площади
               </a>
               <a className="button button-ghost" href="#projects">
-                Посмотреть проекты
+                Посмотреть выполненные работы
               </a>
             </div>
             <p className="microcopy">
-              Укажите тип объекта, площадь и наличие дизайн-проекта — ориентир
-              появится сразу, без передачи телефона.
+              Калькулятор покажет нижний ориентир по типу объекта и площади.
+              Телефон вводить не нужно.
             </p>
           </div>
           <figure className="hero-visual">
             <Image
               src="https://static.tildacdn.com/tild3765-3735-4439-b837-353165616233/_WhatsApp_2023-10-15.jpg"
-              alt="Интерьер квартиры в старом фонде после ремонта"
+              alt="Интерьер квартиры на Чёрной речке из портфолио компании"
               width="700"
               height="1245"
               fetchPriority="high"
@@ -86,19 +85,19 @@ export default function Home() {
         <section className="proof-strip" aria-label="Факты о компании">
           <div><strong>С 2012 года</strong><span>по данным компании</span></div>
           <div><strong>70+ проектов</strong><span>по данным компании</span></div>
-          <div><strong>После акта</strong><span>оплата каждого этапа</span></div>
+          <div><strong>После акта</strong><span>оплата этапа — по данным компании</span></div>
           <div><strong>2–3 объекта</strong><span>одновременно, по данным компании</span></div>
         </section>
 
         <section className="section" id="services">
           <div className="section-heading section-heading-row">
             <div>
-              <p className="eyebrow">Выберите свой сценарий</p>
-              <h2>Разные объекты — разные риски и состав работ</h2>
+              <p className="eyebrow">Услуги и цены</p>
+              <h2>Для новостройки, старого фонда и коммерции нужен свой расчёт</h2>
             </div>
             <p>
-              Не смешиваем новостройку, старый фонд и коммерцию в одну
-              усреднённую смету.
+              Начальная цена зависит от типа объекта. На странице услуги указаны
+              состав работ, порядок расчёта и подходящий кейс.
             </p>
           </div>
           <div className="service-grid">
@@ -108,15 +107,15 @@ export default function Home() {
                 <h3>{service.short}</h3>
                 <p>{service.description}</p>
                 <strong>{service.priceLabel}</strong>
-                <span className="card-link">Подробнее →</span>
+                <span className="card-link">Что входит →</span>
               </Link>
             ))}
             <Link className="service-card service-card-accent" href="/zavershit-remont-posle-podryadchika">
               <span className="card-index">05</span>
-              <h3>Завершить чужой ремонт</h3>
-              <p>Осмотр, оценка выполненного и план безопасного завершения объекта.</p>
+              <h3>Завершить ремонт после подрядчика</h3>
+              <p>Проверка выполненных работ, перечень оставшихся задач и новая смета.</p>
               <strong>Сначала осмотр</strong>
-              <span className="card-link">Оценить ситуацию →</span>
+              <span className="card-link">Как проходит проверка →</span>
             </Link>
           </div>
         </section>
@@ -124,12 +123,12 @@ export default function Home() {
         <section className="section dark-section" id="projects">
           <div className="section-heading section-heading-row">
             <div>
-              <p className="eyebrow eyebrow-light">Реальные объекты</p>
-              <h2>Не обещания, а состав работ</h2>
+              <p className="eyebrow eyebrow-light">Проекты компании</p>
+              <h2>В кейсах — площадь, срок и выполненные работы</h2>
             </div>
             <p>
-              Показываем площадь, задачу и то, что было выполнено. Срок указываем
-              только там, где он опубликован в исходном портфолио.
+              Срок указан там, где он опубликован в портфолио компании. Для ЖК
+              Neva Haus срок и итоговая стоимость пока не подтверждены.
             </p>
           </div>
           <div className="case-grid">
@@ -144,9 +143,9 @@ export default function Home() {
                   <h3>{item.title}</h3>
                   <p>{item.summary}</p>
                   {item.id === "neva-haus" ? (
-                    <Link href="/projects/neva-haus">Открыть кейс →</Link>
+                    <Link href="/projects/neva-haus">Посмотреть состав работ →</Link>
                   ) : (
-                    <a href="#calculator">Рассчитать похожий объект →</a>
+                    <a href="#calculator">Перейти к расчёту →</a>
                   )}
                 </div>
               </article>
@@ -156,12 +155,12 @@ export default function Home() {
 
         <section className="section pricing-section">
           <div className="pricing-copy">
-            <p className="eyebrow">Стоимость</p>
-            <h2>Стартовая цена — ориентир, а не обещание вслепую</h2>
+            <p className="eyebrow">Опубликованные цены</p>
+            <h2>На сайте компании указано от 15 000–45 000 ₽/м²</h2>
             <p>
-              На итог влияют состояние объекта, инженерные решения, геометрия,
-              материалы и полнота проекта. Поэтому сначала даём ориентир, затем
-              осматриваем объект и собираем подробную смету.
+              Цена зависит от состояния объекта, демонтажа, инженерных решений
+              и комплекта чертежей. Калькулятор даёт нижний ориентир; смета
+              появляется после осмотра и согласования состава работ.
             </p>
           </div>
           <div className="price-table">
@@ -176,16 +175,16 @@ export default function Home() {
 
         <section className="section process-section" id="process">
           <div className="section-heading">
-            <p className="eyebrow">Как проходит ремонт</p>
-            <h2>Контроль встроен в процесс, а не оставлен на финал</h2>
+            <p className="eyebrow">Как компания описывает процесс</p>
+            <h2>Пять этапов: от осмотра до оплаты по акту</h2>
           </div>
           <ol className="process-list">
             {[
-              ["Знакомимся с объектом", "Получаем планировку или проект, уточняем задачу и договариваемся об осмотре."],
-              ["Собираем смету", "Фиксируем состав работ, стоимость, последовательность и условия изменений."],
-              ["Подписываем договор", "Цена и сроки закрепляются до начала соответствующих работ."],
-              ["Работаем по этапам", "Присылаем фото- и видеоотчёты, показываем выполненные и скрытые работы."],
-              ["Принимаете результат", "Каждый этап принимается по акту и только после этого оплачивается."],
+              ["Осмотр объекта", "Компания получает планировку или проект, уточняет задачу и осматривает помещение."],
+              ["Смета", "В смете перечисляются работы, их стоимость и последовательность."],
+              ["Договор", "До начала работ стороны согласуют цену, сроки и порядок изменений."],
+              ["Работы и отчёты", "Компания выполняет ремонт по этапам и присылает фото- и видеоотчёты."],
+              ["Приёмка и оплата", "Заказчик принимает этап по акту и после этого оплачивает его."],
             ].map(([title, text], index) => (
               <li key={title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -199,24 +198,24 @@ export default function Home() {
           <article>
             <span className="line-icon">↳</span>
             <h3>Смета и договор</h3>
-            <p>Состав работ и условия фиксируются до старта, а изменения согласуются отдельно.</p>
+            <p>В документах перечисляются работы и условия; изменения согласуются отдельно.</p>
           </article>
           <article>
             <span className="line-icon">◫</span>
             <h3>Фото- и видеоотчёты</h3>
-            <p>Можно следить за этапами без постоянных поездок на объект.</p>
+            <p>По данным компании, заказчик получает материалы о ходе работ.</p>
           </article>
           <article>
             <span className="line-icon">✓</span>
             <h3>Приёмка по этапам</h3>
-            <p>Оплата следует после выполненного этапа и подписанного акта.</p>
+            <p>Компания заявляет оплату выполненного этапа после подписания акта.</p>
           </article>
           <article className="founder-card">
-            <p>«Лично отвечаю за качество ремонта на каждом объекте»</p>
+            <p>Обсудить объект можно напрямую с руководителем компании.</p>
             <strong>Евгений Свентий</strong>
-            <span>Основатель и руководитель НЕВА-ремонт</span>
+            <span>Руководитель НЕВА-ремонт — по данным сайта компании</span>
             <TrackedLink href={company.telegram} event="telegram_click" placement="founder">
-              Написать Евгению →
+              Открыть чат с Евгением в Telegram →
             </TrackedLink>
           </article>
         </section>
@@ -224,10 +223,10 @@ export default function Home() {
         <section className="section calculator-section" id="calculator">
           <div className="section-heading calculator-heading">
             <p className="eyebrow">Предварительный расчёт</p>
-            <h2>Узнайте нижний ориентир для своего объекта</h2>
+            <h2>Калькулятор покажет нижний ориентир по площади</h2>
             <p>
-              Результат появится сразу. После этого можно отправить параметры
-              Евгению и уточнить, что потребуется для сметы.
+              Выберите тип объекта, площадь и состояние дизайн-проекта. Результат
+              можно открыть в WhatsApp вместе с параметрами расчёта.
             </p>
           </div>
           <LeadCalculator />
@@ -235,8 +234,8 @@ export default function Home() {
 
         <section className="section faq-grid" id="faq">
           <div>
-            <p className="eyebrow">Частые вопросы</p>
-            <h2>Что уточнить до подписания договора</h2>
+            <p className="eyebrow">До договора</p>
+            <h2>Стоимость, оплата и контроль объекта</h2>
           </div>
           <div>
             {faq.map((item) => (
@@ -249,15 +248,15 @@ export default function Home() {
         </section>
 
         <section className="section final-cta">
-          <p className="eyebrow eyebrow-light">Начать с конкретики</p>
-          <h2>Пришлите планировку, площадь и пару слов о задаче</h2>
-          <p>Евгений уточнит вводные и подскажет следующий шаг.</p>
+          <p className="eyebrow eyebrow-light">Обсудить объект</p>
+          <h2>Отправьте Евгению площадь, планировку и описание задачи</h2>
+          <p>В мессенджере приложите планировку и коротко опишите задачу.</p>
           <div className="hero-actions">
             <TrackedLink href={company.whatsapp} event="whatsapp_click" placement="final" className="button button-light">
-              Написать в WhatsApp
+              Открыть чат в WhatsApp
             </TrackedLink>
             <TrackedLink href={company.telegram} event="telegram_click" placement="final" className="button button-outline-light">
-              Написать в Telegram
+              Открыть чат в Telegram
             </TrackedLink>
           </div>
         </section>
