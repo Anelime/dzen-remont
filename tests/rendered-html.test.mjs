@@ -1,6 +1,21 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+const publicRoutes = [
+  "/",
+  "/remont-kvartir-v-novostroyke-spb",
+  "/remont-starogo-fonda-spb",
+  "/remont-kommercheskih-pomeshcheniy-spb",
+  "/kosmeticheskiy-remont-spb",
+  "/remont-po-dizayn-proektu-spb",
+  "/zavershit-remont-posle-podryadchika",
+  "/projects/neva-haus",
+  "/privacy",
+];
+
+const outsiderVoice =
+  /по данным (?:компании|сайта)|на (?:текущем )?сайте компании|компания (?:заявляет|описывает|указывает)|опубликованные цены|карточк[ае] проекта|портфолио компании|черновик для предпросмотра|\[добавить /i;
+
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -23,7 +38,9 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.match(html, /Какой ремонт нужно рассчитать/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /НЕВА-ремонт/);
-  assert.match(html, /по данным компании/i);
+  assert.match(html, /С 2012 года/);
+  assert.match(html, /Стартовая цена зависит от вида ремонта/);
+  assert.doesNotMatch(html, outsiderVoice);
   assert.doesNotMatch(html, /фиксированная смета|безупречное качество|ремонт мечты/i);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });
@@ -35,4 +52,13 @@ test("server-renders an intent-specific service route", async () => {
   assert.match(html, /Капитальный ремонт квартиры в старом фонде/);
   assert.match(html, /от 45 000/);
   assert.match(html, /\"@type\":\"Service\"/);
+});
+
+test("all public routes use the first-party voice", async () => {
+  for (const path of publicRoutes) {
+    const response = await render(path);
+    assert.equal(response.status, 200, `${path} should render`);
+    const html = await response.text();
+    assert.doesNotMatch(html, outsiderVoice, `${path} contains outsider or draft copy`);
+  }
 });

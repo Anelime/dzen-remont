@@ -266,6 +266,8 @@ h3 { line-height: 1.15; letter-spacing: -.025em; }
 .site-footer h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .11em; color: var(--acid); }
 .site-footer p, .site-footer a { color: rgba(255,255,255,.62); font-size: 13px; }
 .site-footer a:hover { color: white; }
+.footer-settings { padding: 0; border: 0; background: transparent; color: rgba(255,255,255,.62); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; }
+.footer-settings:hover { color: white; }
 .footnote { max-width: 250px; margin-top: 14px; }
 
 .consent { position: fixed; z-index: 100; right: 20px; bottom: 20px; max-width: 430px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: 0 20px 70px rgba(17,24,32,.18); }

@@ -175,7 +175,7 @@ export default function LeadCalculator({
   function contact(channel: "whatsapp" | "telegram") {
     if (!area) return;
 
-    const message = `Здравствуйте! Хочу обсудить ремонт. Тип работ: ${service.title.toLowerCase()}. Площадь: ${formatter.format(area)} м². Дизайн-проект: ${projectOption?.label.toLowerCase() ?? "не указан"}. Расчёт по стартовой цене, опубликованной компанией: от ${formatter.format(estimate ?? 0)} ₽.`;
+    const message = `Здравствуйте! Хочу обсудить ремонт. Тип работ: ${service.title.toLowerCase()}. Площадь: ${formatter.format(area)} м². Дизайн-проект: ${projectOption?.label.toLowerCase() ?? "не указан"}. Предварительный ориентир по стартовой цене: от ${formatter.format(estimate ?? 0)} ₽.`;
 
     trackEvent("messenger_click", {
       service_slug: service.slug,
@@ -250,7 +250,7 @@ export default function LeadCalculator({
                     />
                     <span className="quiz-option-copy">
                       <strong>{item.title}</strong>
-                      <small>{item.priceLabel} — по данным компании</small>
+                      <small>Стартовая цена: {item.priceLabel}</small>
                     </span>
                   </label>
                 ))}
@@ -357,8 +357,8 @@ export default function LeadCalculator({
                 Расчёт по стартовой цене
               </legend>
               <p className="quiz-lead">
-                Калькулятор умножил площадь на стартовую цену, опубликованную
-                компанией.
+                Калькулятор умножил площадь на стартовую цену выбранного вида
+                ремонта.
               </p>
               <output className="quiz-result-price" aria-live="polite">
                 <span>Предварительный ориентир</span>
@@ -384,9 +384,9 @@ export default function LeadCalculator({
                 </button>
               </div>
               <p className="quiz-contact-note">
-                Мессенджер откроется в новой вкладке. Сайт ничего не отправляет
+                Откроем выбранный мессенджер. Сайт ничего не отправляет
                 автоматически: сообщение в WhatsApp нужно проверить и отправить.
-                Для Telegram текст расчёта скопируется в буфер обмена.
+                Для Telegram попробуем скопировать текст расчёта в буфер обмена.
               </p>
             </fieldset>
           )}
@@ -412,7 +412,7 @@ export default function LeadCalculator({
             <span>Ориентир по стартовой цене</span>
             <strong>{estimate ? `от ${formatter.format(estimate)} ₽` : "—"}</strong>
           </div>
-          <small>Стартовые цены указаны по данным компании.</small>
+          <small>Для точной сметы нужен осмотр объекта.</small>
         </aside>
       </div>
 

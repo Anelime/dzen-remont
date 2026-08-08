@@ -13,9 +13,18 @@ export const metadata: Metadata = {
 };
 
 const gallery = [
-  "https://static.tildacdn.com/tild3535-6163-4263-b538-343762393433/photo_2025-10-16_21-.jpg",
-  "https://static.tildacdn.com/tild6539-3435-4764-b835-666261616665/photo_2025-10-16_21-.jpg",
-  "https://static.tildacdn.com/tild6162-3630-4335-b136-326536663931/photo_2025-10-16_21-.jpg",
+  {
+    src: "https://static.tildacdn.com/tild3535-6163-4263-b538-343762393433/photo_2025-10-16_21-.jpg",
+    alt: "Комната с деревянным полом и установленными светильниками в ЖК Neva Haus",
+  },
+  {
+    src: "https://static.tildacdn.com/tild6539-3435-4764-b835-666261616665/photo_2025-10-16_21-.jpg",
+    alt: "Инженерный узел и отделка санузла в квартире ЖК Neva Haus",
+  },
+  {
+    src: "https://static.tildacdn.com/tild6162-3630-4335-b136-326536663931/photo_2025-10-16_21-.jpg",
+    alt: "Комната с уложенным полом и незавершённым потолком в ЖК Neva Haus",
+  },
 ];
 
 export default function Page() {
@@ -28,10 +37,9 @@ export default function Page() {
             <Link className="eyebrow back-link" href="/#projects">← Все проекты</Link>
             <h1>Капитальный ремонт квартиры в ЖК Neva Haus</h1>
             <p className="hero-copy">
-              В опубликованной карточке проекта указаны стяжка, новые
-              перегородки, электрика, сантехника, плиточные и малярные работы.
+              На объекте сделали стяжку, новые перегородки, электрику,
+              сантехнику, плиточные и малярные работы.
             </p>
-            <p className="microcopy">Площадь и число комнат указаны по карточке проекта компании.</p>
           </div>
           <dl className="case-facts">
             <div><dt>Площадь</dt><dd>78 м²</dd></div>
@@ -40,14 +48,14 @@ export default function Page() {
           </dl>
         </section>
         <section className="section project-gallery">
-          {gallery.map((src, index) => (
-            <Image key={src} src={src} alt={`Ремонт квартиры в ЖК Neva Haus — этап ${index + 1}`} width="700" height="1242" unoptimized />
+          {gallery.map((image) => (
+            <Image key={image.src} src={image.src} alt={image.alt} width="700" height="1242" unoptimized />
           ))}
         </section>
         <section className="section split-section">
           <div>
             <p className="eyebrow">Состав работ</p>
-            <h2>Что компания перечисляет в карточке проекта</h2>
+            <h2>Что сделали на объекте</h2>
           </div>
           <ul className="clean-list">
             <li>Стяжка и выравнивание пола</li>
@@ -59,7 +67,7 @@ export default function Page() {
           </ul>
         </section>
         <section className="section" id="calculator">
-          <div className="section-heading"><p className="eyebrow">Новостройка</p><h2>Рассчитайте работы по площади квартиры</h2></div>
+          <div className="section-heading"><p className="eyebrow">Новостройка</p><h2>Получите предварительный ориентир по площади</h2></div>
           <LeadCalculator compact initialServiceSlug="remont-kvartir-v-novostroyke-spb" />
         </section>
       </main>

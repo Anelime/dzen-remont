@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { company, services } from "../site-data";
-import { TrackedLink } from "./Analytics";
+import { AnalyticsSettingsLink, TrackedLink } from "./Analytics";
 
 export function Header() {
   return (
@@ -58,7 +58,8 @@ export function Footer() {
       </div>
       <div>
         <h3>Документы</h3>
-        <Link href="/privacy">Политика обработки данных</Link>
+        <Link href="/privacy">Конфиденциальность и аналитика</Link>
+        <AnalyticsSettingsLink />
         <p className="footnote">
           Цены на сайте указаны для ориентира и не являются публичной офертой.
         </p>

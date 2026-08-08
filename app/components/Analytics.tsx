@@ -13,6 +13,10 @@ declare global {
   }
 }
 
+const analyticsConfigured = Boolean(
+  process.env.NEXT_PUBLIC_GTM_ID || process.env.NEXT_PUBLIC_YM_ID,
+);
+
 export function trackEvent(
   event: string,
   data: Record<string, unknown> = {},
@@ -55,6 +59,7 @@ export function AnalyticsConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!analyticsConfigured) return;
     const consent = window.localStorage.getItem("neva_analytics_consent");
     if (consent === "granted") enableAnalytics();
     if (!consent) window.setTimeout(() => setVisible(true), 0);
@@ -112,13 +117,14 @@ export function AnalyticsConsent() {
     if (value === "granted") enableAnalytics();
   }
 
-  if (!visible) return null;
+  if (!analyticsConfigured || !visible) return null;
   return (
     <aside className="consent" aria-label="Настройки аналитики">
       <strong>Аналитика сайта</strong>
       <p>
-        С разрешения загрузим счётчики посещений и рекламы. Условия описаны в
-        <Link href="/privacy"> политике обработки данных</Link>.
+        Подключаем аналитику только с вашего согласия. Она помогает понять,
+        какие страницы открывают посетители и откуда они приходят. Подробнее —
+        в разделе <Link href="/privacy">«Конфиденциальность и аналитика»</Link>.
       </p>
       <div className="consent-actions">
         <button className="button button-small" onClick={() => choose("granted")}>
@@ -129,6 +135,21 @@ export function AnalyticsConsent() {
         </button>
       </div>
     </aside>
+  );
+}
+
+export function AnalyticsSettingsLink() {
+  if (!analyticsConfigured) return null;
+
+  function resetConsent() {
+    window.localStorage.removeItem("neva_analytics_consent");
+    window.location.reload();
+  }
+
+  return (
+    <button className="footer-settings" type="button" onClick={resetConsent}>
+      Настроить аналитику
+    </button>
   );
 }
 

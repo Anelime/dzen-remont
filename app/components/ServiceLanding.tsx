@@ -9,7 +9,7 @@ export type ServiceData = (typeof services)[number];
 export function serviceMetadata(service: ServiceData): Metadata {
   return {
     title: `${service.title} в Санкт-Петербурге — ${service.priceLabel} | НЕВА-ремонт`,
-    description: `${service.title} в Санкт-Петербурге. Работы ${service.priceLabel} по данным компании. Расчёт по площади и обсуждение осмотра.`,
+    description: `${service.title} в Санкт-Петербурге. Стартовая цена — ${service.priceLabel}. Предварительный расчёт по площади; смета после осмотра.`,
     alternates: { canonical: `${siteUrl}/${service.slug}` },
   };
 }
@@ -53,7 +53,7 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
             </p>
           </div>
           <aside className="service-hero-card">
-            <span>Работы — по данным компании</span>
+            <span>Стартовая цена</span>
             <strong>{service.priceLabel}</strong>
             <p>{service.audience}</p>
           </aside>
@@ -61,7 +61,7 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
 
         <section className="section split-section">
           <div>
-            <p className="eyebrow">Как компания описывает работу</p>
+            <p className="eyebrow">Этапы ремонта</p>
             <h2>Пять этапов — от осмотра до приёмки</h2>
           </div>
           <ol className="clean-list numbered-list">
@@ -76,22 +76,22 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
         <section className="section proof-panel">
           <div>
             <span>С 2012 года</span>
-            <p>опыт компании по данным текущего сайта</p>
+            <p>ремонтируем квартиры и коммерческие помещения</p>
           </div>
           <div>
             <span>70+ проектов</span>
-            <p>жилые и коммерческие помещения, по данным компании</p>
+            <p>жилые и коммерческие помещения</p>
           </div>
           <div>
-            <span>2–3 объекта</span>
-            <p>одновременно, по данным компании</p>
+            <span>Не больше трёх</span>
+            <p>объектов одновременно</p>
           </div>
         </section>
 
         <section className="section" id="calculator">
           <div className="section-heading">
             <p className="eyebrow">Расчёт</p>
-            <h2>Калькулятор посчитает работы по стартовой цене</h2>
+            <h2>Калькулятор покажет предварительный ориентир</h2>
             <p>Для сметы нужен осмотр; здесь достаточно выбрать тип ремонта и площадь.</p>
           </div>
           <LeadCalculator compact initialServiceSlug={service.slug} />
