@@ -19,6 +19,8 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.match(html, /<html lang="ru"/i);
   assert.match(html, /Ремонт квартир под ключ/);
   assert.match(html, /Предварительный расчёт/);
+  assert.match(html, /Шаг 1 из 3/);
+  assert.match(html, /Какой ремонт нужно рассчитать/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /НЕВА-ремонт/);
   assert.match(html, /по данным компании/i);

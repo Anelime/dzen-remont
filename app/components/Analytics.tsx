@@ -18,14 +18,24 @@ export function trackEvent(
   data: Record<string, unknown> = {},
 ) {
   if (typeof window === "undefined") return;
+  try {
+    if (window.localStorage.getItem("neva_analytics_consent") !== "granted") return;
+  } catch {
+    return;
+  }
   const query = new URLSearchParams(window.location.search);
+  const campaignParam = (name: string) => {
+    const value = query.get(name);
+    if (!value) return undefined;
+    return value.replace(/[^\p{L}\p{N}._-]/gu, "").slice(0, 100) || undefined;
+  };
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({
     event,
     page_path: window.location.pathname,
-    utm_source: query.get("utm_source") ?? undefined,
-    utm_medium: query.get("utm_medium") ?? undefined,
-    utm_campaign: query.get("utm_campaign") ?? undefined,
+    utm_source: campaignParam("utm_source"),
+    utm_medium: campaignParam("utm_medium"),
+    utm_campaign: campaignParam("utm_campaign"),
     ...data,
   });
   const ymId = Number(process.env.NEXT_PUBLIC_YM_ID);
