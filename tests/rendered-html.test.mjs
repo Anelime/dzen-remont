@@ -42,6 +42,27 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.match(html, /НЕВА-ремонт/);
   assert.match(html, /С 2012 года/);
   assert.match(html, /Стартовая цена зависит от вида ремонта/);
+  assert.match(
+    html,
+    /property="og:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-neva-remont-v2\.jpg"/,
+  );
+  assert.match(html, /property="og:image:type" content="image\/jpeg"/);
+  assert.match(html, /property="og:image:width" content="1200"/);
+  assert.match(html, /property="og:image:height" content="630"/);
+  assert.match(html, /property="og:image:alt" content="НЕВА-ремонт/);
+  assert.match(
+    html,
+    /property="og:url" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site"/,
+  );
+  assert.match(
+    html,
+    /name="twitter:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-neva-remont-v2\.jpg"/,
+  );
+  assert.match(
+    html,
+    /rel="canonical" href="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site"/,
+  );
+  assert.doesNotMatch(html, /localhost:3000/);
   assert.doesNotMatch(html, outsiderVoice);
   assert.doesNotMatch(html, /фиксированная смета|безупречное качество|ремонт мечты/i);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);

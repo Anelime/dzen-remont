@@ -16,6 +16,11 @@ const literata = Literata({
   display: "swap",
 });
 
+const socialTitle = "Ремонт квартир под ключ в Санкт-Петербурге | НЕВА-ремонт";
+const socialDescription =
+  "Новостройки, старый фонд и коммерческие помещения. Предварительный расчёт по площади — без номера телефона.";
+const socialImageUrl = `${siteUrl}/og-neva-remont-v2.jpg`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -25,16 +30,36 @@ export const metadata: Metadata = {
   description:
     "Ремонт квартир и коммерческих помещений в Санкт-Петербурге. Стартовые цены — от 15 000 ₽/м²; предварительный расчёт по площади.",
   applicationName: "НЕВА-ремонт",
+  alternates: { canonical: siteUrl },
   openGraph: {
     type: "website",
+    url: siteUrl,
     locale: "ru_RU",
     siteName: "НЕВА-ремонт",
-    title: "Ремонт квартир под ключ в Санкт-Петербурге",
-    description:
-      "Капитальный ремонт квартир и коммерческих помещений в Санкт-Петербурге.",
-    images: [{ url: "/og.png", width: 1200, height: 630 }],
+    title: socialTitle,
+    description: socialDescription,
+    images: [
+      {
+        url: socialImageUrl,
+        secureUrl: socialImageUrl,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "НЕВА-ремонт — ремонт квартир под ключ в Санкт-Петербурге",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image", images: ["/og.png"] },
+  twitter: {
+    card: "summary_large_image",
+    title: socialTitle,
+    description: socialDescription,
+    images: [
+      {
+        url: socialImageUrl,
+        alt: "НЕВА-ремонт — ремонт квартир под ключ в Санкт-Петербурге",
+      },
+    ],
+  },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
   robots: isIndexable
     ? { index: true, follow: true }

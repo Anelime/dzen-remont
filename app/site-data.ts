@@ -1,8 +1,8 @@
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "http://localhost:3000";
+  "https://neva-remont-redesign.rick-ai.chatgpt.site";
 
-export const isIndexable = process.env.NEXT_PUBLIC_INDEX_SITE === "true";
+export const isIndexable = process.env.NEXT_PUBLIC_INDEX_SITE !== "false";
 
 export const company = {
   name: "НЕВА-ремонт",
