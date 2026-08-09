@@ -8,7 +8,7 @@ export type ServiceData = (typeof services)[number];
 
 export function serviceMetadata(service: ServiceData): Metadata {
   return {
-    title: `${service.title} в Санкт-Петербурге — ${service.priceLabel} | ZEN-ремонт`,
+    title: `${service.title} в Санкт-Петербурге — ${service.priceLabel} | Дзен Ремонт`,
     description: `${service.title} в Санкт-Петербурге. Стартовая цена — ${service.priceLabel}. Предварительный расчёт по площади; смета после осмотра.`,
     alternates: { canonical: `${siteUrl}/${service.slug}` },
   };

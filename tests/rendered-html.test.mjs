@@ -39,33 +39,33 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.match(html, /Цена за метр — только начало расчёта/);
   assert.doesNotMatch(html, /Есть ли дизайн-проект|Шаг 1 из 3/);
   assert.match(html, /application\/ld\+json/);
-  assert.match(html, /ZEN-ремонт/);
-  assert.match(html, /ZEN/);
+  assert.match(html, /Дзен Ремонт/);
+  assert.match(html, /DZEN/);
   assert.match(html, /REMONT/);
   assert.match(html, /С 2012 года/);
   assert.match(html, /Коммерческий ремонт — от 15 000/);
   assert.match(
     html,
-    /property="og:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-zen-remont-v1\.jpg"/,
+    /property="og:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-dzen-remont-v1\.jpg"/,
   );
   assert.match(html, /property="og:image:type" content="image\/jpeg"/);
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);
-  assert.match(html, /property="og:image:alt" content="ZEN-ремонт/);
+  assert.match(html, /property="og:image:alt" content="Дзен Ремонт/);
   assert.match(
     html,
     /property="og:url" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site"/,
   );
   assert.match(
     html,
-    /name="twitter:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-zen-remont-v1\.jpg"/,
+    /name="twitter:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-dzen-remont-v1\.jpg"/,
   );
   assert.match(
     html,
     /rel="canonical" href="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site"/,
   );
   assert.doesNotMatch(html, /localhost:3000/);
-  assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ/);
+  assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ|ZEN-ремонт|(?<!D)ZEN REMONT/);
   assert.doesNotMatch(html, outsiderVoice);
   assert.doesNotMatch(html, /фиксированная смета|безупречное качество|ремонт мечты/i);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
@@ -93,6 +93,6 @@ test("all public routes use the first-party voice", async () => {
     assert.equal(response.status, 200, `${path} should render`);
     const html = await response.text();
     assert.doesNotMatch(html, outsiderVoice, `${path} contains outsider or draft copy`);
-    assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ/, `${path} contains the previous brand`);
+    assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ|ZEN-ремонт|(?<!D)ZEN REMONT/, `${path} contains the previous brand`);
   }
 });

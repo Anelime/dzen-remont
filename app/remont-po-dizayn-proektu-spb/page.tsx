@@ -5,7 +5,7 @@ import { Footer, Header } from "../components/SiteShell";
 import { company, siteUrl } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Ремонт помещения по дизайн-проекту в СПб | ZEN-ремонт",
+  title: "Ремонт помещения по дизайн-проекту в СПб | Дзен Ремонт",
   description:
     "Ремонт коммерческого или жилого помещения по дизайн-проекту в Санкт-Петербурге. Пришлите чертежи для обсуждения состава работ и предварительного расчёта.",
   alternates: { canonical: `${siteUrl}/remont-po-dizayn-proektu-spb` },

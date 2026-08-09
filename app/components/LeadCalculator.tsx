@@ -35,7 +35,7 @@ function getAreaBucket(area: number) {
 
 function analyticsAllowed() {
   try {
-    return window.localStorage.getItem("neva_analytics_consent") === "granted";
+    return window.localStorage.getItem("dzen_analytics_consent") === "granted";
   } catch {
     return false;
   }

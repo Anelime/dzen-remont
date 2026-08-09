@@ -16,26 +16,26 @@ const literata = Literata({
   display: "swap",
 });
 
-const socialTitle = "Ремонт помещений в Санкт-Петербурге | ZEN-ремонт";
+const socialTitle = "Ремонт помещений в Санкт-Петербурге | Дзен Ремонт";
 const socialDescription =
   "Коммерческие помещения — основное направление. Салоны, офисы и другие объекты — от 15 000 ₽/м².";
-const socialImageUrl = `${siteUrl}/og-zen-remont-v1.jpg`;
+const socialImageUrl = `${siteUrl}/og-dzen-remont-v1.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ZEN-ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
+    default: "Дзен Ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
     template: "%s",
   },
   description:
     "Ремонт коммерческих помещений в Санкт-Петербурге: салоны, офисы и другие объекты. От 15 000 ₽/м²; расчёт по площади, смета после осмотра.",
-  applicationName: "ZEN-ремонт",
+  applicationName: "Дзен Ремонт",
   alternates: { canonical: siteUrl },
   openGraph: {
     type: "website",
     url: siteUrl,
     locale: "ru_RU",
-    siteName: "ZEN-ремонт",
+    siteName: "Дзен Ремонт",
     title: socialTitle,
     description: socialDescription,
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "ZEN-ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
+        alt: "Дзен Ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
       },
     ],
   },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: socialImageUrl,
-        alt: "ZEN-ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
+        alt: "Дзен Ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
       },
     ],
   },

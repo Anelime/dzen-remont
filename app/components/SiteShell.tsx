@@ -6,10 +6,10 @@ import { AnalyticsSettingsLink, TrackedLink } from "./Analytics";
 export function Header() {
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="ZEN-ремонт — на главную">
+      <Link className="brand" href="/" aria-label="Дзен Ремонт — на главную">
         <Image
           className="brand-mark"
-          src="/brand/zen-mark-512.png"
+          src="/brand/dzen-mark-512.png"
           alt=""
           width={42}
           height={42}
@@ -17,7 +17,7 @@ export function Header() {
           unoptimized
         />
         <span className="brand-wordmark" aria-hidden="true">
-          <strong>ZEN</strong>
+          <strong>DZEN</strong>
           <small>REMONT</small>
         </span>
       </Link>
@@ -51,14 +51,14 @@ export function Footer() {
         <Link className="brand brand-footer" href="/">
           <Image
             className="brand-mark"
-            src="/brand/zen-mark-512.png"
+            src="/brand/dzen-mark-512.png"
             alt=""
             width={48}
             height={48}
             unoptimized
           />
           <span className="brand-wordmark" aria-hidden="true">
-            <strong>ZEN</strong>
+            <strong>DZEN</strong>
             <small>REMONT</small>
           </span>
         </Link>

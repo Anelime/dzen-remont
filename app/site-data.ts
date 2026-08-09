@@ -5,7 +5,7 @@ export const siteUrl =
 export const isIndexable = process.env.NEXT_PUBLIC_INDEX_SITE !== "false";
 
 export const company = {
-  name: "ZEN-ремонт",
+  name: "Дзен Ремонт",
   phone: "+7 921 951-02-19",
   phoneHref: "tel:+79219510219",
   whatsapp: "https://wa.me/79219510219",

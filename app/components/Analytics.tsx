@@ -23,7 +23,7 @@ export function trackEvent(
 ) {
   if (typeof window === "undefined") return;
   try {
-    if (window.localStorage.getItem("neva_analytics_consent") !== "granted") return;
+    if (window.localStorage.getItem("dzen_analytics_consent") !== "granted") return;
   } catch {
     return;
   }
@@ -60,7 +60,7 @@ export function AnalyticsConsent() {
 
   useEffect(() => {
     if (!analyticsConfigured) return;
-    const consent = window.localStorage.getItem("neva_analytics_consent");
+    const consent = window.localStorage.getItem("dzen_analytics_consent");
     if (consent === "granted") enableAnalytics();
     if (!consent) window.setTimeout(() => setVisible(true), 0);
 
@@ -91,7 +91,7 @@ export function AnalyticsConsent() {
       window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
       loadScript(
         `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`,
-        "neva-gtm",
+        "dzen-gtm",
       );
     }
     if (ymId) {
@@ -100,7 +100,7 @@ export function AnalyticsConsent() {
         window.ym!.a!.push(args);
       };
       window.ym.l = Date.now();
-      loadScript("https://mc.yandex.ru/metrika/tag.js", "neva-ym");
+      loadScript("https://mc.yandex.ru/metrika/tag.js", "dzen-ym");
       window.ym(Number(ymId), "init", {
         clickmap: true,
         trackLinks: true,
@@ -112,7 +112,7 @@ export function AnalyticsConsent() {
   }
 
   function choose(value: "granted" | "denied") {
-    window.localStorage.setItem("neva_analytics_consent", value);
+    window.localStorage.setItem("dzen_analytics_consent", value);
     setVisible(false);
     if (value === "granted") enableAnalytics();
   }
@@ -142,7 +142,7 @@ export function AnalyticsSettingsLink() {
   if (!analyticsConfigured) return null;
 
   function resetConsent() {
-    window.localStorage.removeItem("neva_analytics_consent");
+    window.localStorage.removeItem("dzen_analytics_consent");
     window.location.reload();
   }
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the deterministic 1200x630 social preview for ZEN REMONT."""
+"""Build the deterministic 1200x630 social preview for DZEN REMONT."""
 
 from pathlib import Path
 
@@ -7,8 +7,8 @@ from PIL import Image, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "assets" / "og" / "og-zen-remont-v1-source.png"
-OUTPUT = ROOT / "public" / "og-zen-remont-v1.jpg"
+SOURCE = ROOT / "assets" / "og" / "og-dzen-remont-v1-source.png"
+OUTPUT = ROOT / "public" / "og-dzen-remont-v1.jpg"
 
 WIDTH = 1200
 HEIGHT = 630

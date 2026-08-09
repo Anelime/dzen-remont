@@ -7,7 +7,7 @@ import { Footer, Header } from "./components/SiteShell";
 import { cases, company, faq, services, siteUrl } from "./site-data";
 
 export const metadata: Metadata = {
-  title: "Ремонт помещений в Санкт-Петербурге | ZEN-ремонт",
+  title: "Ремонт помещений в Санкт-Петербурге | Дзен Ремонт",
   description:
     "Ремонт коммерческих помещений в Санкт-Петербурге: салоны, офисы и другие объекты. От 15 000 ₽/м²; расчёт по площади, смета после осмотра.",
   alternates: { canonical: siteUrl },
@@ -20,7 +20,7 @@ export default function Home() {
     name: company.name,
     url: siteUrl,
     telephone: company.phone,
-    logo: `${siteUrl}/brand/zen-mark-512.png`,
+    logo: `${siteUrl}/brand/dzen-mark-512.png`,
     areaServed: { "@type": "City", name: "Санкт-Петербург" },
     knowsAbout: [
       "ремонт коммерческих помещений",
@@ -86,7 +86,7 @@ export default function Home() {
           </figure>
         </section>
 
-        <section className="proof-strip" aria-label="Факты о ZEN-ремонт">
+        <section className="proof-strip" aria-label="Факты о компании Дзен Ремонт">
           <div><strong>С 2012 года</strong><span>ремонтируем коммерческие и жилые помещения</span></div>
           <div><strong>70+ проектов</strong><span>в портфолио</span></div>
           <div><strong>После акта</strong><span>оплата принятого этапа</span></div>
@@ -227,7 +227,7 @@ export default function Home() {
           <article className="founder-card">
             <p>Обсудить объект можно напрямую с Евгением Свентием.</p>
             <strong>Евгений Свентий</strong>
-            <span>Руководитель ZEN-ремонт</span>
+            <span>Руководитель компании «Дзен Ремонт»</span>
             <TrackedLink href={company.telegram} event="telegram_click" placement="founder">
               Открыть чат с Евгением в Telegram →
             </TrackedLink>
