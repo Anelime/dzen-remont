@@ -1,13 +1,15 @@
-# Telegram and Open Graph preview v2
+# Telegram and Open Graph preview: ZEN REMONT v1
 
-- Final asset: `public/og-neva-remont-v2.jpg`
+- Final asset: `public/og-zen-remont-v1.jpg`
 - Canvas: 1200 × 630 px, RGB JPEG
-- Background source: `assets/og/og-background-v2.jpg`
-- Background treatment: built-in ImageGen edit of the previous `public/og.png`; no generated text or claims
-- Deterministic overlay: `scripts/build-og-preview.py`
-- Exact copy: `NEVA`, `РЕМОНТ`, `САНКТ-ПЕТЕРБУРГ`, `Ремонт квартир под ключ`, `в Санкт-Петербурге`, `С 2012 года · 70+ проектов`, `Новостройки · старый фонд`, `Коммерческие помещения`
+- Source card: `assets/og/og-zen-remont-v1-source.png`
+- Photo source: `assets/og/karpovka-source.jpg`, completed salon project on Karpovka
+- Brand mark source: `public/brand/zen-mark-512.png`
+- Creative treatment: built-in ImageGen social-preview composition; deterministic resize and export in `scripts/build-og-preview.py`
+- Deterministic 1200 × 630 export: `scripts/build-og-preview.py`
+- Exact copy: `ZEN`, `REMONT`, `САНКТ-ПЕТЕРБУРГ`, `Ремонт коммерческих помещений под ключ`, `С 2012 года · 70+ проектов`, `Салоны · офисы · другие помещения`
 - Brand palette: navy `#111820`, paper `#F4F1EA`, copper `#B85B36`, acid `#D9EF68`
-- Claims source: the homepage facts and service scope in `app/page.tsx` and `app/site-data.ts`
+- Claims source: the homepage facts, commercial service and Karpovka case in `app/page.tsx` and `app/site-data.ts`
 - Exclusions: no fixed price, phone, guarantee, award, testimonial, or pseudo-button
 
 Rebuild on macOS with Pillow installed:

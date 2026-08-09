@@ -4,7 +4,7 @@ import { Footer, Header } from "../components/SiteShell";
 import { company, siteUrl } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Завершить ремонт после другого подрядчика в СПб | НЕВА-ремонт",
+  title: "Завершить ремонт после другого подрядчика в СПб | ZEN-ремонт",
   description:
     "Обсудить завершение ремонта после другого подрядчика в Санкт-Петербурге: фотографии объекта, старая смета и осмотр перед новым расчётом.",
   alternates: { canonical: `${siteUrl}/zavershit-remont-posle-podryadchika` },

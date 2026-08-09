@@ -16,26 +16,26 @@ const literata = Literata({
   display: "swap",
 });
 
-const socialTitle = "Ремонт квартир под ключ в Санкт-Петербурге | НЕВА-ремонт";
+const socialTitle = "Ремонт помещений в Санкт-Петербурге | ZEN-ремонт";
 const socialDescription =
-  "Новостройки, старый фонд и коммерческие помещения. Предварительный расчёт по площади — без номера телефона.";
-const socialImageUrl = `${siteUrl}/og-neva-remont-v2.jpg`;
+  "Коммерческие помещения — основное направление. Салоны, офисы и другие объекты — от 15 000 ₽/м².";
+const socialImageUrl = `${siteUrl}/og-zen-remont-v1.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "НЕВА-ремонт — ремонт квартир под ключ в Санкт-Петербурге",
+    default: "ZEN-ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
     template: "%s",
   },
   description:
-    "Ремонт квартир и коммерческих помещений в Санкт-Петербурге. Стартовые цены — от 15 000 ₽/м²; предварительный расчёт по площади.",
-  applicationName: "НЕВА-ремонт",
+    "Ремонт коммерческих помещений в Санкт-Петербурге: салоны, офисы и другие объекты. От 15 000 ₽/м²; расчёт по площади, смета после осмотра.",
+  applicationName: "ZEN-ремонт",
   alternates: { canonical: siteUrl },
   openGraph: {
     type: "website",
     url: siteUrl,
     locale: "ru_RU",
-    siteName: "НЕВА-ремонт",
+    siteName: "ZEN-ремонт",
     title: socialTitle,
     description: socialDescription,
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "НЕВА-ремонт — ремонт квартир под ключ в Санкт-Петербурге",
+        alt: "ZEN-ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
       },
     ],
   },
@@ -56,11 +56,15 @@ export const metadata: Metadata = {
     images: [
       {
         url: socialImageUrl,
-        alt: "НЕВА-ремонт — ремонт квартир под ключ в Санкт-Петербурге",
+        alt: "ZEN-ремонт — ремонт коммерческих помещений в Санкт-Петербурге",
       },
     ],
   },
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  icons: {
+    icon: "/brand/favicon-32x32.png",
+    shortcut: "/brand/favicon-32x32.png",
+    apple: "/brand/apple-touch-icon.png",
+  },
   robots: isIndexable
     ? { index: true, follow: true }
     : { index: false, follow: false, nocache: true },

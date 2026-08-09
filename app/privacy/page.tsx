@@ -4,7 +4,7 @@ import { Footer, Header } from "../components/SiteShell";
 import { company } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Конфиденциальность и аналитика | НЕВА-ремонт",
+  title: "Конфиденциальность и аналитика | ZEN-ремонт",
   robots: { index: false, follow: true },
 };
 

@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((service) => ({
       url: `${siteUrl}/${service.slug}`,
       lastModified: now,
-      priority: 0.85,
+      priority: service.slug === "remont-kommercheskih-pomeshcheniy-spb" ? 0.9 : 0.82,
       changeFrequency: "monthly" as const,
     })),
     { url: `${siteUrl}/zavershit-remont-posle-podryadchika`, lastModified: now, priority: 0.8, changeFrequency: "monthly" as const },

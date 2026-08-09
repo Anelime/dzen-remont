@@ -6,7 +6,7 @@ import { Footer, Header } from "../../components/SiteShell";
 import { siteUrl } from "../../site-data";
 
 export const metadata: Metadata = {
-  title: "Ремонт квартиры в ЖК Neva Haus | НЕВА-ремонт",
+  title: "Ремонт квартиры в ЖК Neva Haus | ZEN-ремонт",
   description:
     "Кейс ремонта квартиры в ЖК Neva Haus: перегородки, стяжка, электрика, сантехника, малярные и плиточные работы.",
   alternates: { canonical: `${siteUrl}/projects/neva-haus` },

@@ -8,7 +8,7 @@ export type ServiceData = (typeof services)[number];
 
 export function serviceMetadata(service: ServiceData): Metadata {
   return {
-    title: `${service.title} в Санкт-Петербурге — ${service.priceLabel} | НЕВА-ремонт`,
+    title: `${service.title} в Санкт-Петербурге — ${service.priceLabel} | ZEN-ремонт`,
     description: `${service.title} в Санкт-Петербурге. Стартовая цена — ${service.priceLabel}. Предварительный расчёт по площади; смета после осмотра.`,
     alternates: { canonical: `${siteUrl}/${service.slug}` },
   };
@@ -76,11 +76,11 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
         <section className="section proof-panel">
           <div>
             <span>С 2012 года</span>
-            <p>ремонтируем квартиры и коммерческие помещения</p>
+            <p>ремонтируем коммерческие и жилые помещения</p>
           </div>
           <div>
             <span>70+ проектов</span>
-            <p>жилые и коммерческие помещения</p>
+            <p>коммерческие и жилые помещения</p>
           </div>
           <div>
             <span>Не больше трёх</span>

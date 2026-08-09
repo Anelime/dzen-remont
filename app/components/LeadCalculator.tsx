@@ -11,7 +11,7 @@ const formatter = new Intl.NumberFormat("ru-RU", {
 const stepKeys = ["service", "area"] as const;
 const nextButtonLabels = ["Указать площадь", "Показать ориентир"];
 const resultStep = 2;
-const quickAreas = [45, 70, 100, 150];
+const quickAreas = [50, 100, 200, 300];
 const maxTechnicalArea = 1_000_000;
 const serviceSummaryLabels: Record<string, string> = {
   "remont-kvartir-v-novostroyke-spb": "Квартира в новостройке",
@@ -158,7 +158,7 @@ export default function LeadCalculator({
   function contact(channel: "whatsapp" | "telegram") {
     if (!area || !service) return;
 
-    const message = `Здравствуйте! Хочу обсудить ремонт. Тип работ: ${service.title.toLowerCase()}. Площадь: ${formatter.format(area)} м². Предварительный ориентир по стартовой цене: от ${formatter.format(estimate ?? 0)} ₽.`;
+    const message = `Здравствуйте! Хочу обсудить ремонт помещения. Тип объекта: ${serviceSummaryLabels[service.slug] ?? service.title}. Площадь: ${formatter.format(area)} м². Предварительный ориентир по стартовой цене: от ${formatter.format(estimate ?? 0)} ₽.`;
 
     trackEvent("messenger_click", {
       service_slug: service.slug,
@@ -209,10 +209,10 @@ export default function LeadCalculator({
           {step === 0 && (
             <fieldset className="quiz-panel">
               <legend ref={stepHeadingRef} tabIndex={-1}>
-                Что нужно отремонтировать?
+                Какое помещение ремонтируем?
               </legend>
               <p className="quiz-lead">
-                Выберите вид объекта — от него зависит стартовая цена за м².
+                Выберите направление — от него зависит стартовая цена за м².
               </p>
               <div className="quiz-options quiz-service-options">
                 {services.map((item) => (
@@ -251,10 +251,10 @@ export default function LeadCalculator({
           {step === 1 && service && (
             <fieldset className="quiz-panel">
               <legend ref={stepHeadingRef} tabIndex={-1}>
-                Укажите площадь
+                Какая площадь помещения?
               </legend>
               <p className="quiz-lead" id={`${quizId}-area-hint`}>
-                Возьмите площадь из плана квартиры или помещения.
+                Возьмите общую площадь из планировки или дизайн-проекта.
               </p>
               <label className="quiz-area-field" htmlFor={`${quizId}-area`}>
                 <span>Площадь, м²</span>
@@ -304,8 +304,7 @@ export default function LeadCalculator({
                 </p>
               )}
               <p className="quiz-formula-hint">
-                Расчёт = площадь × стартовая цена. Результат покажем после
-                нажатия.
+                Площадь × стартовая цена. Итог покажем после нажатия.
               </p>
             </fieldset>
           )}
@@ -316,7 +315,7 @@ export default function LeadCalculator({
                 Предварительный ориентир готов
               </legend>
               <p className="quiz-lead">
-                Мы умножили площадь на стартовую цену выбранного вида ремонта.
+                Рассчитали площадь по стартовой цене выбранного направления.
               </p>
               <output className="quiz-result-price" aria-live="polite">
                 <span>Предварительный ориентир</span>
@@ -326,19 +325,19 @@ export default function LeadCalculator({
                 </small>
               </output>
               <p className="quiz-result-note">
-                Это не смета. После осмотра уточним состояние объекта, состав
-                работ и проектные решения.
+                Это не смета. Итог зависит от состояния помещения, демонтажа,
+                инженерных решений и комплекта чертежей.
               </p>
               <div className="quiz-contact-actions">
                 <button className="button" type="button" onClick={() => contact("whatsapp")}>
-                  Открыть готовое сообщение в WhatsApp
+                  Обсудить расчёт в WhatsApp
                 </button>
                 <button
                   className="button button-ghost"
                   type="button"
                   onClick={() => contact("telegram")}
                 >
-                  Скопировать текст и открыть Telegram
+                  Скопировать расчёт и открыть Telegram
                 </button>
               </div>
               <p className="quiz-contact-note">

@@ -49,8 +49,11 @@ img { display: block; max-width: 100%; }
   border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
   backdrop-filter: blur(16px);
 }
-.brand { display: inline-flex; flex-direction: column; line-height: .82; letter-spacing: -.07em; font-weight: 850; font-size: 23px; }
-.brand span:last-child { color: var(--copper); font-size: 12px; letter-spacing: .14em; margin-top: 7px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-width: max-content; }
+.brand-mark { width: 42px; height: 42px; padding: 2px; border-radius: 9px; background: var(--surface); object-fit: contain; }
+.brand-wordmark { display: flex; flex-direction: column; line-height: .82; }
+.brand-wordmark strong { color: var(--ink); font-size: 22px; font-weight: 850; letter-spacing: -.055em; }
+.brand-wordmark small { margin-top: 7px; color: #9f4528; font-size: 10px; font-weight: 780; letter-spacing: .17em; }
 .site-header nav { justify-self: center; display: flex; gap: 28px; font-size: 14px; }
 .site-header nav a, .header-phone { transition: color .18s ease; }
 .site-header nav a:hover, .header-phone:hover { color: var(--copper); }
@@ -89,6 +92,8 @@ h1, h2, h3, p { margin-top: 0; }
 h1, h2 { letter-spacing: -.045em; line-height: .98; }
 h1 { font-size: clamp(50px, 6.4vw, 92px); max-width: 980px; margin-bottom: 34px; }
 h1 em { color: var(--navy); font-family: var(--font-literata), Georgia, serif; font-weight: 520; }
+.commercial-hero-title { font-size: clamp(44px, 5.3vw, 78px); max-width: 830px; }
+.commercial-hero-title > span, .commercial-hero-title > em { display: block; }
 h2 { font-size: clamp(40px, 4.5vw, 66px); max-width: 880px; margin-bottom: 28px; }
 h3 { line-height: 1.15; letter-spacing: -.025em; }
 .hero {
@@ -128,6 +133,10 @@ h3 { line-height: 1.15; letter-spacing: -.025em; }
 .service-card p { color: var(--muted); max-width: 560px; }
 .service-card strong { margin-top: auto; font-size: 18px; }
 .service-card-accent { background: var(--acid); border-color: var(--acid); }
+.service-card-primary { background: var(--navy); border-color: var(--navy); color: white; }
+.service-card-primary:hover { background: #0b2d43; border-color: #0b2d43; }
+.service-card-primary p { color: rgba(255,255,255,.68); }
+.service-card-primary .card-index, .service-card-primary .card-link { color: var(--acid); }
 .card-index { color: var(--copper); font-size: 12px; letter-spacing: .12em; }
 .card-link { margin-top: 18px; color: var(--navy); font-weight: 650; }
 
@@ -272,6 +281,9 @@ h3 { line-height: 1.15; letter-spacing: -.025em; }
 .site-footer { width: 100%; padding: 68px max(24px, calc((100vw - 1280px) / 2)); background: var(--ink); color: white; display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 60px; border-top: 1px solid rgba(255,255,255,.14); }
 .site-footer > div { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .brand-footer { margin-bottom: 16px; }
+.brand-footer .brand-mark { width: 48px; height: 48px; background: var(--paper); }
+.brand-footer .brand-wordmark strong { color: white; }
+.brand-footer .brand-wordmark small { color: var(--acid); }
 .site-footer h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .11em; color: var(--acid); }
 .site-footer p, .site-footer a { color: rgba(255,255,255,.62); font-size: 13px; }
 .site-footer a:hover { color: white; }
@@ -339,6 +351,10 @@ h3 { line-height: 1.15; letter-spacing: -.025em; }
   :root { --page: calc(100vw - 32px); }
   .section { padding: 78px 0; }
   .site-header { min-height: 66px; padding: 10px 16px; gap: 12px; }
+  .brand { gap: 8px; }
+  .brand-mark { width: 36px; height: 36px; border-radius: 8px; }
+  .brand-wordmark strong { font-size: 19px; }
+  .brand-wordmark small { margin-top: 6px; font-size: 8px; }
   .header-phone { display: none; }
   .site-header .button-small { min-height: 42px; padding-inline: 14px; }
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 52px; gap: 46px; }

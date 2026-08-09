@@ -32,40 +32,50 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /<html lang="ru"/i);
-  assert.match(html, /Ремонт квартир под ключ/);
+  assert.match(html, /Ремонт помещений/);
   assert.match(html, /Предварительный расчёт/);
   assert.match(html, /Шаг 1 из 2/);
-  assert.match(html, /Что нужно отремонтировать/);
+  assert.match(html, /Какое помещение ремонтируем/);
   assert.match(html, /Цена за метр — только начало расчёта/);
   assert.doesNotMatch(html, /Есть ли дизайн-проект|Шаг 1 из 3/);
   assert.match(html, /application\/ld\+json/);
-  assert.match(html, /НЕВА-ремонт/);
+  assert.match(html, /ZEN-ремонт/);
+  assert.match(html, /ZEN/);
+  assert.match(html, /REMONT/);
   assert.match(html, /С 2012 года/);
-  assert.match(html, /Стартовая цена зависит от вида ремонта/);
+  assert.match(html, /Коммерческий ремонт — от 15 000/);
   assert.match(
     html,
-    /property="og:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-neva-remont-v2\.jpg"/,
+    /property="og:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-zen-remont-v1\.jpg"/,
   );
   assert.match(html, /property="og:image:type" content="image\/jpeg"/);
   assert.match(html, /property="og:image:width" content="1200"/);
   assert.match(html, /property="og:image:height" content="630"/);
-  assert.match(html, /property="og:image:alt" content="НЕВА-ремонт/);
+  assert.match(html, /property="og:image:alt" content="ZEN-ремонт/);
   assert.match(
     html,
     /property="og:url" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site"/,
   );
   assert.match(
     html,
-    /name="twitter:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-neva-remont-v2\.jpg"/,
+    /name="twitter:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-zen-remont-v1\.jpg"/,
   );
   assert.match(
     html,
     /rel="canonical" href="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site"/,
   );
   assert.doesNotMatch(html, /localhost:3000/);
+  assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ/);
   assert.doesNotMatch(html, outsiderVoice);
   assert.doesNotMatch(html, /фиксированная смета|безупречное качество|ремонт мечты/i);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
+});
+
+test("commercial services and case are presented first", async () => {
+  const response = await render();
+  const html = await response.text();
+  assert.ok(html.indexOf("Коммерческие помещения") < html.indexOf("Новостройка"));
+  assert.ok(html.indexOf("Салон красоты на Карповке") < html.indexOf("Квартира на Чёрной речке"));
 });
 
 test("server-renders an intent-specific service route", async () => {
@@ -83,5 +93,6 @@ test("all public routes use the first-party voice", async () => {
     assert.equal(response.status, 200, `${path} should render`);
     const html = await response.text();
     assert.doesNotMatch(html, outsiderVoice, `${path} contains outsider or draft copy`);
+    assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ/, `${path} contains the previous brand`);
   }
 });

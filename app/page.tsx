@@ -7,9 +7,9 @@ import { Footer, Header } from "./components/SiteShell";
 import { cases, company, faq, services, siteUrl } from "./site-data";
 
 export const metadata: Metadata = {
-  title: "Ремонт квартир под ключ в Санкт-Петербурге | НЕВА-ремонт",
+  title: "Ремонт помещений в Санкт-Петербурге | ZEN-ремонт",
   description:
-    "Ремонт квартир и коммерческих помещений в Санкт-Петербурге. Цены для новостройки — от 28 000 ₽/м²; предварительный расчёт по площади.",
+    "Ремонт коммерческих помещений в Санкт-Петербурге: салоны, офисы и другие объекты. От 15 000 ₽/м²; расчёт по площади, смета после осмотра.",
   alternates: { canonical: siteUrl },
 };
 
@@ -20,12 +20,14 @@ export default function Home() {
     name: company.name,
     url: siteUrl,
     telephone: company.phone,
+    logo: `${siteUrl}/brand/zen-mark-512.png`,
     areaServed: { "@type": "City", name: "Санкт-Петербург" },
     knowsAbout: [
-      "ремонт квартир",
-      "ремонт в новостройке",
-      "ремонт старого фонда",
       "ремонт коммерческих помещений",
+      "ремонт салонов красоты",
+      "ремонт офисов",
+      "ремонт квартир в новостройке",
+      "ремонт квартир в старом фонде",
     ],
   };
   const faqSchema = {
@@ -44,21 +46,23 @@ export default function Home() {
       <main>
         <section className="hero section">
           <div className="hero-content">
-            <p className="eyebrow">Санкт-Петербург · жилые и коммерческие объекты</p>
-            <h1>
-              Ремонт квартир под ключ <em>в Санкт-Петербурге</em>
+            <p className="eyebrow">Коммерческие объекты — основное направление</p>
+            <h1 className="commercial-hero-title">
+              <span>Ремонт помещений</span>
+              <em>в Санкт-Петербурге</em>
             </h1>
             <p className="hero-copy">
-              Ремонтируем квартиры в новостройках и старом фонде, а также
-              коммерческие помещения. Ремонт в новостройке — от 28 000 ₽/м²,
-              в старом фонде — от 45 000 ₽/м². Смету составляем после осмотра.
+              Ремонтируем салоны, офисы и другие коммерческие помещения. Также
+              берём в работу квартиры в новостройках и старом фонде.
+              Коммерческий ремонт — от 15 000 ₽/м². Смету составляем после
+              осмотра.
             </p>
             <div className="hero-actions">
               <a className="button" href="#calculator">
-                Рассчитать по площади
+                Получить ориентир по площади
               </a>
               <a className="button button-ghost" href="#projects">
-                Посмотреть выполненные работы
+                Посмотреть коммерческий проект
               </a>
             </div>
             <p className="microcopy">
@@ -68,55 +72,62 @@ export default function Home() {
           </div>
           <figure className="hero-visual">
             <Image
-              src="https://static.tildacdn.com/tild3765-3735-4439-b837-353165616233/_WhatsApp_2023-10-15.jpg"
-              alt="Интерьер квартиры на Чёрной речке"
+              src="https://static.tildacdn.com/tild3165-3237-4761-b732-653265313263/xC7xrs-Vr5RE6zwlIQ5j.jpg"
+              alt="Интерьер салона красоты на Карповке"
               width="700"
               height="1245"
               fetchPriority="high"
               unoptimized
             />
             <figcaption>
-              <span>Старый фонд · Чёрная речка</span>
-              <strong>150 м²</strong>
+              <span>Салон красоты · Карповка</span>
+              <strong>70 м² · 5 недель</strong>
             </figcaption>
           </figure>
         </section>
 
-        <section className="proof-strip" aria-label="Факты о НЕВА-ремонт">
-          <div><strong>С 2012 года</strong><span>ремонтируем жилые и коммерческие помещения</span></div>
+        <section className="proof-strip" aria-label="Факты о ZEN-ремонт">
+          <div><strong>С 2012 года</strong><span>ремонтируем коммерческие и жилые помещения</span></div>
           <div><strong>70+ проектов</strong><span>в портфолио</span></div>
           <div><strong>После акта</strong><span>оплата принятого этапа</span></div>
-          <div><strong>Не больше трёх</strong><span>объектов ведём одновременно</span></div>
+          <div><strong>До трёх объектов</strong><span>ведём одновременно</span></div>
         </section>
 
         <section className="section" id="services">
           <div className="section-heading section-heading-row">
             <div>
-              <p className="eyebrow">Услуги и цены</p>
-              <h2>Для новостройки, старого фонда и коммерции нужен свой расчёт</h2>
+              <p className="eyebrow">Ремонт помещений</p>
+              <h2>Для бизнеса — коммерческие объекты. Для жизни — квартиры</h2>
             </div>
             <p>
-              Начальная цена зависит от типа объекта. На странице услуги указаны
-              состав работ, порядок расчёта и подходящий кейс.
+              Для каждого направления указали стартовую цену, состав работ и
+              порядок расчёта.
             </p>
           </div>
           <div className="service-grid">
-            {services.map((service, index) => (
+            <Link className="service-card service-card-primary" href={`/${services[0].slug}`}>
+              <span className="card-index">01</span>
+              <h3>{services[0].short}</h3>
+              <p>{services[0].description}</p>
+              <strong>{services[0].priceLabel}</strong>
+              <span className="card-link">Что входит →</span>
+            </Link>
+            <Link className="service-card service-card-accent" href="/zavershit-remont-posle-podryadchika">
+              <span className="card-index">02</span>
+              <h3>Завершить ремонт после подрядчика</h3>
+              <p>Проверка выполненных работ, перечень оставшихся задач и новая смета.</p>
+              <strong>Сначала осмотр</strong>
+              <span className="card-link">Как проходит проверка →</span>
+            </Link>
+            {services.slice(1).map((service, index) => (
               <Link className="service-card" href={`/${service.slug}`} key={service.slug}>
-                <span className="card-index">0{index + 1}</span>
+                <span className="card-index">0{index + 3}</span>
                 <h3>{service.short}</h3>
                 <p>{service.description}</p>
                 <strong>{service.priceLabel}</strong>
                 <span className="card-link">Что входит →</span>
               </Link>
             ))}
-            <Link className="service-card service-card-accent" href="/zavershit-remont-posle-podryadchika">
-              <span className="card-index">05</span>
-              <h3>Завершить ремонт после подрядчика</h3>
-              <p>Проверка выполненных работ, перечень оставшихся задач и новая смета.</p>
-              <strong>Сначала осмотр</strong>
-              <span className="card-link">Как проходит проверка →</span>
-            </Link>
           </div>
         </section>
 
@@ -156,11 +167,11 @@ export default function Home() {
         <section className="section pricing-section">
           <div className="pricing-copy">
             <p className="eyebrow">Стартовые цены</p>
-            <h2>Стартовая цена зависит от вида ремонта</h2>
+            <h2>Коммерческий ремонт — от 15 000 ₽/м²</h2>
             <p>
-              Стартовая цена зависит от состояния объекта, демонтажа,
-              инженерных решений и комплекта чертежей. Калькулятор покажет
-              предварительный ориентир; после осмотра составим смету.
+              Калькулятор даёт нижний ориентир. После осмотра уточняем
+              состояние помещения, демонтаж, инженерные решения и комплект
+              чертежей, затем составляем смету.
             </p>
           </div>
           <div className="price-table">
@@ -176,12 +187,12 @@ export default function Home() {
         <section className="section process-section" id="process">
           <div className="section-heading">
             <p className="eyebrow">Как работаем</p>
-            <h2>Пять этапов: от осмотра до оплаты по акту</h2>
+            <h2>От осмотра помещения до оплаты по акту</h2>
           </div>
           <ol className="process-list" role="list">
             {[
-              ["Осмотр объекта", "Получаем планировку или проект, уточняем задачу и осматриваем помещение."],
-              ["Смета", "Перечисляем работы, их стоимость и последовательность."],
+              ["Осмотр помещения", "Получаем планировку или проект, уточняем задачу и осматриваем помещение."],
+              ["Состав работ и смета", "Перечисляем работы, их стоимость и последовательность."],
               ["Договор", "До начала работ согласовываем цену, сроки и порядок изменений."],
               ["Работы и отчёты", "Выполняем ремонт по этапам и присылаем фото- и видеоотчёты."],
               ["Приёмка и оплата", "Заказчик принимает этап по акту и после этого оплачивает его."],
@@ -216,7 +227,7 @@ export default function Home() {
           <article className="founder-card">
             <p>Обсудить объект можно напрямую с Евгением Свентием.</p>
             <strong>Евгений Свентий</strong>
-            <span>Руководитель НЕВА-ремонт</span>
+            <span>Руководитель ZEN-ремонт</span>
             <TrackedLink href={company.telegram} event="telegram_click" placement="founder">
               Открыть чат с Евгением в Telegram →
             </TrackedLink>
@@ -226,10 +237,9 @@ export default function Home() {
         <section className="section calculator-section" id="calculator">
           <div className="section-heading calculator-heading">
             <p className="eyebrow">Предварительный расчёт</p>
-            <h2>Калькулятор покажет предварительный ориентир по площади</h2>
+            <h2>Узнайте стартовый ориентир для своего помещения</h2>
             <p>
-              Два шага: выберите вид ремонта и укажите площадь. Телефон вводить
-              не нужно.
+              Выберите тип объекта и укажите площадь. Телефон вводить не нужно.
             </p>
           </div>
           <LeadCalculator />
@@ -238,7 +248,7 @@ export default function Home() {
         <section className="section faq-grid" id="faq">
           <div>
             <p className="eyebrow">До договора</p>
-            <h2>Стоимость, оплата и контроль объекта</h2>
+            <h2>Коммерческий ремонт: стоимость, работы и контроль</h2>
           </div>
           <div>
             {faq.map((item) => (
@@ -251,9 +261,12 @@ export default function Home() {
         </section>
 
         <section className="section final-cta">
-          <p className="eyebrow eyebrow-light">Обсудить объект</p>
+          <p className="eyebrow eyebrow-light">Обсудить помещение</p>
           <h2>Отправьте Евгению площадь, планировку и описание задачи</h2>
-          <p>В мессенджере приложите планировку и коротко опишите задачу.</p>
+          <p>
+            Если есть дизайн-проект, фотографии текущего состояния или старая
+            смета, приложите их к сообщению.
+          </p>
           <div className="hero-actions">
             <TrackedLink href={company.whatsapp} event="whatsapp_click" placement="final" className="button button-light">
               Открыть чат в WhatsApp

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { company, services } from "../site-data";
 import { AnalyticsSettingsLink, TrackedLink } from "./Analytics";
@@ -5,9 +6,20 @@ import { AnalyticsSettingsLink, TrackedLink } from "./Analytics";
 export function Header() {
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="НЕВА-ремонт — на главную">
-        <span>NEVA</span>
-        <span>РЕМОНТ</span>
+      <Link className="brand" href="/" aria-label="ZEN-ремонт — на главную">
+        <Image
+          className="brand-mark"
+          src="/brand/zen-mark-512.png"
+          alt=""
+          width={42}
+          height={42}
+          priority
+          unoptimized
+        />
+        <span className="brand-wordmark" aria-hidden="true">
+          <strong>ZEN</strong>
+          <small>REMONT</small>
+        </span>
       </Link>
       <nav aria-label="Основная навигация">
         <Link href="/#services">Услуги</Link>
@@ -37,10 +49,20 @@ export function Footer() {
     <footer className="site-footer">
       <div>
         <Link className="brand brand-footer" href="/">
-          <span>NEVA</span>
-          <span>РЕМОНТ</span>
+          <Image
+            className="brand-mark"
+            src="/brand/zen-mark-512.png"
+            alt=""
+            width={48}
+            height={48}
+            unoptimized
+          />
+          <span className="brand-wordmark" aria-hidden="true">
+            <strong>ZEN</strong>
+            <small>REMONT</small>
+          </span>
         </Link>
-        <p>Ремонт жилых и коммерческих помещений в Санкт-Петербурге.</p>
+        <p>Ремонт коммерческих и жилых помещений в Санкт-Петербурге.</p>
       </div>
       <div>
         <h3>Услуги</h3>
