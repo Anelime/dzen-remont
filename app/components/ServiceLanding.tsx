@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import LeadCalculator from "./LeadCalculator";
 import { Header, Footer } from "./SiteShell";
-import { company, faq, services, siteUrl } from "../site-data";
+import { cases, company, faq, services, siteUrl } from "../site-data";
 
 export type ServiceData = (typeof services)[number];
 
@@ -15,6 +16,7 @@ export function serviceMetadata(service: ServiceData): Metadata {
 }
 
 export default function ServiceLanding({ service }: { service: ServiceData }) {
+  const featuredCase = cases.find((project) => project.serviceSlug === service.slug);
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -87,6 +89,36 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
             <p>объектов одновременно</p>
           </div>
         </section>
+
+        {featuredCase ? (
+          <section className="section service-case-section">
+            <div className="section-heading section-heading-row">
+              <div>
+                <p className="eyebrow">Пример выполненных работ</p>
+                <h2>{featuredCase.title}</h2>
+              </div>
+              <p>
+                Откройте кейс: внутри — площадь, фотографии, состав работ и срок,
+                если он зафиксирован.
+              </p>
+            </div>
+            <Link className="service-case-card" href={featuredCase.href}>
+              <Image
+                src={featuredCase.image}
+                alt={featuredCase.alt}
+                width={1200}
+                height={800}
+                sizes="(max-width: 760px) 100vw, 55vw"
+                unoptimized
+              />
+              <span>
+                <small>{featuredCase.type} · {featuredCase.stats}</small>
+                <strong>{featuredCase.summary}</strong>
+                <b>Открыть кейс →</b>
+              </span>
+            </Link>
+          </section>
+        ) : null}
 
         <section className="section" id="calculator">
           <div className="section-heading">

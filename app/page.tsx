@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import LeadCalculator from "./components/LeadCalculator";
+import CaseGrid from "./components/CaseGrid";
 import { TrackedLink } from "./components/Analytics";
 import { Footer, Header } from "./components/SiteShell";
-import { cases, company, faq, services, siteUrl } from "./site-data";
+import { company, faq, services, siteUrl } from "./site-data";
 
 export const metadata: Metadata = {
   title: "Ремонт помещений в Санкт-Петербурге | Дзен Ремонт",
@@ -61,9 +62,9 @@ export default function Home() {
               <a className="button" href="#calculator">
                 Получить ориентир по площади
               </a>
-              <a className="button button-ghost" href="#projects">
+              <Link className="button button-ghost" href="/projects/salon-karpovka">
                 Посмотреть коммерческий проект
-              </a>
+              </Link>
             </div>
             <p className="microcopy">
               Калькулятор покажет нижний ориентир по типу объекта и площади.
@@ -72,10 +73,10 @@ export default function Home() {
           </div>
           <figure className="hero-visual">
             <Image
-              src="https://static.tildacdn.com/tild3165-3237-4761-b732-653265313263/xC7xrs-Vr5RE6zwlIQ5j.jpg"
+              src="/projects/salon-karpovka/salon-hall.jpg"
               alt="Интерьер салона красоты на Карповке"
-              width="700"
-              height="1245"
+              width="1680"
+              height="1127"
               fetchPriority="high"
               unoptimized
             />
@@ -142,26 +143,7 @@ export default function Home() {
               для проектов, где он зафиксирован.
             </p>
           </div>
-          <div className="case-grid">
-            {cases.map((item) => (
-              <article className="case-card" key={item.id}>
-                <div className="case-image-wrap">
-                  <Image src={item.image} alt={item.alt} width="700" height="900" loading="lazy" unoptimized />
-                  <span>{item.type}</span>
-                </div>
-                <div className="case-copy">
-                  <p>{item.stats}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                  {item.id === "neva-haus" ? (
-                    <Link href="/projects/neva-haus">Посмотреть состав работ →</Link>
-                  ) : (
-                    <a href="#calculator">Перейти к расчёту →</a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
+          <CaseGrid />
         </section>
 
         <section className="section pricing-section">

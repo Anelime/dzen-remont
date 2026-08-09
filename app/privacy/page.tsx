@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { AnalyticsSettingsLink } from "../components/Analytics";
 import { Footer, Header } from "../components/SiteShell";
-import { company } from "../site-data";
+import { company, siteUrl } from "../site-data";
 
 export const metadata: Metadata = {
   title: "Конфиденциальность и аналитика | Дзен Ремонт",
+  alternates: { canonical: `${siteUrl}/privacy` },
   robots: { index: false, follow: true },
 };
 

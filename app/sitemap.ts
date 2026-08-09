@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services, siteUrl } from "./site-data";
+import { cases, services, siteUrl } from "./site-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${siteUrl}/zavershit-remont-posle-podryadchika`, lastModified: now, priority: 0.8, changeFrequency: "monthly" as const },
     { url: `${siteUrl}/remont-po-dizayn-proektu-spb`, lastModified: now, priority: 0.8, changeFrequency: "monthly" as const },
-    { url: `${siteUrl}/projects/neva-haus`, lastModified: now, priority: 0.75, changeFrequency: "monthly" as const },
+    { url: `${siteUrl}/projects`, lastModified: now, priority: 0.82, changeFrequency: "monthly" as const },
+    ...cases.map((project) => ({
+      url: `${siteUrl}${project.href}`,
+      lastModified: now,
+      priority: project.id === "salon-karpovka" ? 0.8 : 0.75,
+      changeFrequency: "monthly" as const,
+    })),
   ];
 }

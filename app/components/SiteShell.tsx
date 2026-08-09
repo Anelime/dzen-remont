@@ -23,7 +23,7 @@ export function Header() {
       </Link>
       <nav aria-label="Основная навигация">
         <Link href="/#services">Услуги</Link>
-        <Link href="/#projects">Проекты</Link>
+        <Link href="/projects">Проекты</Link>
         <Link href="/#process">Как работаем</Link>
         <Link href="/#faq">Вопросы</Link>
       </nav>
@@ -71,6 +71,14 @@ export function Footer() {
             {service.short}
           </Link>
         ))}
+        <Link href="/remont-po-dizayn-proektu-spb">Ремонт по дизайн-проекту</Link>
+      </div>
+      <div>
+        <h3>Проекты</h3>
+        <Link href="/projects">Все выполненные проекты</Link>
+        <Link href="/projects/salon-karpovka">Салон на Карповке</Link>
+        <Link href="/projects/chernaya-rechka">Квартира на Чёрной речке</Link>
+        <Link href="/projects/neva-haus">Квартира в ЖК Neva Haus</Link>
       </div>
       <div>
         <h3>Связаться</h3>

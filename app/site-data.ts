@@ -70,41 +70,229 @@ export function getService(slug: string) {
   return service;
 }
 
-export const cases = [
+export type ProjectCase = {
+  id: string;
+  href: string;
+  type: string;
+  title: string;
+  pageTitle: string;
+  stats: string;
+  summary: string;
+  lead: string;
+  image: string;
+  alt: string;
+  seoTitle: string;
+  seoDescription: string;
+  facts: Array<{ label: string; value: string }>;
+  works: string[];
+  galleryHeading: string;
+  gallery: Array<{
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+    featured?: boolean;
+  }>;
+  serviceSlug: string;
+  serviceLabel: string;
+};
+
+export const cases: ProjectCase[] = [
   {
     id: "salon-karpovka",
+    href: "/projects/salon-karpovka",
     type: "Коммерция",
     title: "Салон красоты на Карповке",
+    pageTitle: "Ремонт салона красоты на Карповке",
     stats: "70 м² · 5 недель",
     summary:
       "Перегородки, стяжка, электрика, сантехника, вентиляция, кондиционирование и отделка.",
-    image:
-      "https://static.tildacdn.com/tild3165-3237-4761-b732-653265313263/xC7xrs-Vr5RE6zwlIQ5j.jpg",
+    lead:
+      "За 5 недель выполнили ремонт салона площадью 70 м²: перепланировку, инженерные системы и чистовую отделку.",
+    image: "/projects/salon-karpovka/salon-hall.jpg",
     alt: "Интерьер салона красоты на Карповке",
+    seoTitle: "Ремонт салона красоты на Карповке — кейс | Дзен Ремонт",
+    seoDescription:
+      "Кейс ремонта салона красоты площадью 70 м² на Карповке: перепланировка, инженерные системы и отделка за 5 недель.",
+    facts: [
+      { label: "Площадь", value: "70 м²" },
+      { label: "Срок", value: "5 недель" },
+      { label: "Тип объекта", value: "Салон красоты" },
+    ],
+    works: [
+      "Стяжка пола",
+      "Демонтаж и возведение перегородок",
+      "Электрика и слаботочные системы",
+      "Сантехника",
+      "Приточно-вытяжная вентиляция и кондиционирование",
+      "Штукатурные, малярные и плиточные работы",
+      "Монтаж светильников, электрики и сантехприборов",
+    ],
+    galleryHeading: "Готовое пространство салона",
+    gallery: [
+      {
+        src: "/projects/salon-karpovka/salon-hall.jpg",
+        alt: "Общий зал салона красоты на Карповке после ремонта",
+        caption: "Рабочий зал с освещением и зонированием",
+        width: 1680,
+        height: 1127,
+        featured: true,
+      },
+      {
+        src: "/projects/salon-karpovka/washing-area.jpg",
+        alt: "Зона мойки в салоне красоты на Карповке",
+        caption: "Зона мойки и встроенное хранение",
+        width: 1680,
+        height: 945,
+      },
+      {
+        src: "/projects/salon-karpovka/entrance.jpg",
+        alt: "Входная зона салона красоты на Карповке",
+        caption: "Входная группа, освещение и открытые инженерные трассы",
+        width: 900,
+        height: 1600,
+      },
+      {
+        src: "/projects/salon-karpovka/storage-and-entry.jpg",
+        alt: "Стеллажи и входная зона салона красоты",
+        caption: "Стеллажи, стеклянные перегородки и входная зона",
+        width: 649,
+        height: 1034,
+      },
+    ],
+    serviceSlug: "remont-kommercheskih-pomeshcheniy-spb",
+    serviceLabel: "Ремонт коммерческих помещений",
   },
   {
     id: "chernaya-rechka",
+    href: "/projects/chernaya-rechka",
     type: "Старый фонд",
     title: "Квартира на Чёрной речке",
+    pageTitle: "Капитальный ремонт квартиры на Чёрной речке",
     stats: "150 м² · 1,5 года",
     summary:
       "Новые полы и коммуникации, восстановление кирпичной кладки, лепнины и молдингов.",
-    image:
-      "https://static.tildacdn.com/tild3765-3735-4439-b837-353165616233/_WhatsApp_2023-10-15.jpg",
+    lead:
+      "В квартире старого фонда площадью 150 м² заменили полы и коммуникации, сохранили историческую кладку и восстановили декоративные детали.",
+    image: "/projects/chernaya-rechka/brick-and-parquet.jpg",
     alt: "Интерьер квартиры на Чёрной речке",
+    seoTitle: "Ремонт квартиры на Чёрной речке — кейс | Дзен Ремонт",
+    seoDescription:
+      "Кейс капитального ремонта квартиры 150 м² в доме-памятнике на Чёрной речке: новые полы и коммуникации, восстановление кладки, лепнины и молдингов.",
+    facts: [
+      { label: "Площадь", value: "150 м²" },
+      { label: "Срок", value: "1,5 года" },
+      { label: "Тип объекта", value: "Старый фонд" },
+      { label: "Дом", value: "Дом-памятник" },
+    ],
+    works: [
+      "Вскрытие старых полов и устройство новых",
+      "Перепланировка",
+      "Новые электрические и сантехнические коммуникации",
+      "Система кондиционирования",
+      "Шумоизоляция",
+      "Зачистка и восстановление исторической кирпичной кладки",
+      "Чистовая отделка",
+      "Восстановление и монтаж лепнины и молдингов",
+    ],
+    galleryHeading: "Отделка и восстановленные детали",
+    gallery: [
+      {
+        src: "/projects/chernaya-rechka/brick-and-parquet.jpg",
+        alt: "Историческая кирпичная кладка и новый паркет в квартире на Чёрной речке",
+        caption: "Восстановленная кладка, лепнина и новый паркет",
+        width: 899,
+        height: 1599,
+      },
+      {
+        src: "/projects/chernaya-rechka/corridor.jpg",
+        alt: "Коридор квартиры на Чёрной речке во время чистовой отделки",
+        caption: "Коридор на этапе чистовой отделки",
+        width: 899,
+        height: 1599,
+      },
+      {
+        src: "/projects/chernaya-rechka/brick-windows.jpg",
+        alt: "Окна, кирпичная кладка и деревянный пол в квартире старого фонда",
+        caption: "Сохранённые оконные проёмы и открытая кирпичная кладка",
+        width: 899,
+        height: 1599,
+      },
+      {
+        src: "/projects/chernaya-rechka/mouldings.jpg",
+        alt: "Восстановленные потолочные молдинги в квартире на Чёрной речке",
+        caption: "Потолочные молдинги и подготовленная чистовая отделка",
+        width: 899,
+        height: 1599,
+      },
+    ],
+    serviceSlug: "remont-starogo-fonda-spb",
+    serviceLabel: "Ремонт квартир в старом фонде",
   },
   {
     id: "neva-haus",
+    href: "/projects/neva-haus",
     type: "Новостройка",
     title: "Квартира в ЖК Neva Haus",
+    pageTitle: "Капитальный ремонт квартиры в ЖК Neva Haus",
     stats: "78 м² · 2 комнаты",
     summary:
       "Стяжка, перегородки из ГКЛ и ГВЛ, электрика, сантехника, плиточные и малярные работы.",
-    image:
-      "https://static.tildacdn.com/tild6630-3062-4666-b164-626565623233/photo_2025-10-16_21-.jpg",
+    lead:
+      "В двухкомнатной квартире площадью 78 м² сделали стяжку, перегородки, инженерные сети и подготовили помещения к завершению отделки.",
+    image: "/projects/neva-haus/room.jpg",
     alt: "Квартира 78 квадратных метров в ЖК Neva Haus в процессе ремонта",
+    seoTitle: "Ремонт квартиры в ЖК Neva Haus — кейс | Дзен Ремонт",
+    seoDescription:
+      "Кейс ремонта квартиры 78 м² в ЖК Neva Haus: стяжка, ГКЛ- и ГВЛ-перегородки, электрика, сантехника, плиточные и малярные работы.",
+    facts: [
+      { label: "Площадь", value: "78 м²" },
+      { label: "Тип объекта", value: "Новостройка" },
+      { label: "Комнаты", value: "2" },
+    ],
+    works: [
+      "Стяжка и выравнивание пола",
+      "Межкомнатные перегородки из ГКЛ и ГВЛ",
+      "Выравнивание стен и потолков",
+      "Электрика и сантехника",
+      "Малярные и плиточные работы",
+      "Установка сантехники и электроприборов",
+    ],
+    galleryHeading: "Работы на объекте",
+    gallery: [
+      {
+        src: "/projects/neva-haus/room.jpg",
+        alt: "Комната с деревянным полом и установленными светильниками в ЖК Neva Haus",
+        caption: "Комната после укладки пола и монтажа освещения",
+        width: 721,
+        height: 1280,
+      },
+      {
+        src: "/projects/neva-haus/bathroom.jpg",
+        alt: "Инженерный узел и отделка санузла в квартире ЖК Neva Haus",
+        caption: "Инженерный узел и плиточные работы в санузле",
+        width: 721,
+        height: 1280,
+      },
+      {
+        src: "/projects/neva-haus/floor-and-ceiling.jpg",
+        alt: "Комната с уложенным полом и незавершённым потолком в ЖК Neva Haus",
+        caption: "Пол, стены и потолок на этапе завершения работ",
+        width: 721,
+        height: 1280,
+      },
+    ],
+    serviceSlug: "remont-kvartir-v-novostroyke-spb",
+    serviceLabel: "Ремонт квартир в новостройке",
   },
 ];
+
+export function getCase(id: string) {
+  const project = cases.find((item) => item.id === id);
+  if (!project) throw new Error(`Unknown project: ${id}`);
+  return project;
+}
 
 export const faq = [
   {

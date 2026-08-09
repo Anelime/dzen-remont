@@ -9,6 +9,9 @@ const publicRoutes = [
   "/kosmeticheskiy-remont-spb",
   "/remont-po-dizayn-proektu-spb",
   "/zavershit-remont-posle-podryadchika",
+  "/projects",
+  "/projects/salon-karpovka",
+  "/projects/chernaya-rechka",
   "/projects/neva-haus",
   "/privacy",
 ];
@@ -76,6 +79,51 @@ test("commercial services and case are presented first", async () => {
   const html = await response.text();
   assert.ok(html.indexOf("Коммерческие помещения") < html.indexOf("Новостройка"));
   assert.ok(html.indexOf("Салон красоты на Карповке") < html.indexOf("Квартира на Чёрной речке"));
+  assert.match(html, /href="\/projects\/salon-karpovka"/);
+  assert.match(html, /href="\/projects\/chernaya-rechka"/);
+  assert.match(html, /href="\/projects\/neva-haus"/);
+});
+
+test("all project cards open detailed case pages", async () => {
+  const response = await render("/projects");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const path of [
+    "/projects/salon-karpovka",
+    "/projects/chernaya-rechka",
+    "/projects/neva-haus",
+  ]) {
+    assert.match(html, new RegExp(`href="${path}"`));
+  }
+  assert.match(html, /"@type":"CollectionPage"/);
+  assert.match(html, /"@type":"ItemList"/);
+  assert.match(
+    html,
+    /property="og:url" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/projects"/,
+  );
+});
+
+test("case pages contain proof, navigation, SEO metadata, and a relevant calculator", async () => {
+  const expected = [
+    ["/projects/salon-karpovka", "Ремонт салона красоты на Карповке", "70 м²", "5 недель"],
+    ["/projects/chernaya-rechka", "Капитальный ремонт квартиры на Чёрной речке", "150 м²", "1,5 года"],
+    ["/projects/neva-haus", "Капитальный ремонт квартиры в ЖК Neva Haus", "78 м²", "2"],
+  ];
+
+  for (const [path, heading, fact, secondFact] of expected) {
+    const response = await render(path);
+    assert.equal(response.status, 200, `${path} should render`);
+    const html = await response.text();
+    assert.match(html, new RegExp(heading));
+    assert.match(html, new RegExp(fact));
+    assert.match(html, new RegExp(secondFact));
+    assert.match(html, /Состав работ/);
+    assert.match(html, /Рассчитать похожий объект/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /"@type":"Article"/);
+    assert.match(html, /name="twitter:card" content="summary_large_image"/);
+    assert.match(html, new RegExp(`rel="canonical" href="https:\\/\\/neva-remont-redesign\\.rick-ai\\.chatgpt\\.site${path}"`));
+  }
 });
 
 test("server-renders an intent-specific service route", async () => {
