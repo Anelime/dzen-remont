@@ -35,6 +35,8 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /<html lang="ru"/i);
+  assert.match(html, /class="route-progress"/);
+  assert.match(html, /class="route-stage"/);
   assert.match(html, /Ремонт помещений/);
   assert.match(html, /Предварительный расчёт/);
   assert.match(html, /Шаг 1 из 2/);

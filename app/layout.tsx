@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Literata, Onest } from "next/font/google";
 import { AnalyticsConsent } from "./components/Analytics";
+import NavigationExperience from "./components/NavigationExperience";
 import { isIndexable, siteUrl } from "./site-data";
 import "./globals.css";
 
@@ -80,7 +81,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ru">
       <body className={`${onest.variable} ${literata.variable}`}>
-        {children}
+        <NavigationExperience>{children}</NavigationExperience>
         <AnalyticsConsent />
       </body>
     </html>
