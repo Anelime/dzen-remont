@@ -52,6 +52,11 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.match(html, /REMONT/);
   assert.match(html, /С 2012 года/);
   assert.match(html, /Коммерческий ремонт — от 15 000/);
+  assert.match(html, /гарантия 6 месяцев/i);
+  assert.match(html, /6 месяцев.*гарантия на выполненные работы/s);
+  assert.match(html, /Изменения вносим после согласования с заказчиком/);
+  assert.match(html, /5–7 бригад/);
+  assert.match(html, /партнёрскими дизайнерами/);
   assert.match(
     html,
     /property="og:image" content="https:\/\/neva-remont-redesign\.rick-ai\.chatgpt\.site\/og-dzen-remont-v1\.jpg"/,
@@ -76,6 +81,7 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.doesNotMatch(html, /НЕВА-ремонт|NEVA РЕМОНТ|ZEN-ремонт|(?<!D)ZEN REMONT/);
   assert.doesNotMatch(html, outsiderVoice);
   assert.doesNotMatch(html, /фиксированная смета|безупречное качество|ремонт мечты/i);
+  assert.doesNotMatch(html, /смета не изменится|гарантия на материалы/i);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });
 
@@ -138,6 +144,18 @@ test("server-renders an intent-specific service route", async () => {
   assert.match(html, /Капитальный ремонт квартиры в старом фонде/);
   assert.match(html, /от 45 000/);
   assert.match(html, /\"@type\":\"Service\"/);
+  assert.match(html, /Смета, гарантия и команда/);
+  assert.match(html, /На выполненные работы действует гарантия 6 месяцев/);
+  assert.doesNotMatch(html, /Какие коммерческие помещения вы ремонтируете/);
+});
+
+test("design-project route explains both supported starting points", async () => {
+  const response = await render("/remont-po-dizayn-proektu-spb");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Если проект уже готов/);
+  assert.match(html, /Если дизайнера ещё нет/);
+  assert.match(html, /несколько партнёрских дизайнеров на выбор/);
 });
 
 test("privacy page contains the verified application contacts", async () => {

@@ -134,10 +134,10 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
         <section className="section faq-grid">
           <div>
             <p className="eyebrow">До начала работ</p>
-            <h2>Смета, оплата и отчёты</h2>
+            <h2>Смета, гарантия и команда</h2>
           </div>
           <div>
-            {faq.slice(0, 3).map((item) => (
+            {faq.slice(1, 7).map((item) => (
               <details key={item.question}>
                 <summary>{item.question}</summary>
                 <p>{item.answer}</p>

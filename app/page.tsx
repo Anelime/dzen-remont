@@ -93,7 +93,7 @@ export default function Home() {
           <div><strong>С 2012 года</strong><span>ремонтируем коммерческие и жилые помещения</span></div>
           <div><strong>70+ проектов</strong><span>в портфолио</span></div>
           <div><strong>После акта</strong><span>оплата принятого этапа</span></div>
-          <div><strong>До трёх объектов</strong><span>ведём одновременно</span></div>
+          <div><strong>6 месяцев</strong><span>гарантия на выполненные работы</span></div>
         </section>
 
         <section className="section" id="services">
@@ -195,8 +195,12 @@ export default function Home() {
         <section className="section control-grid">
           <article>
             <span className="line-icon">↳</span>
-            <h3>Смета и договор</h3>
-            <p>В документах перечисляются работы и условия; изменения согласуются отдельно.</p>
+            <h3>Смета по исходным данным</h3>
+            <p>
+              До начала работ учитываем планировку, проект, состояние помещения
+              и выбранные материалы. Изменения обсуждаем до того, как включить
+              их в работу.
+            </p>
           </article>
           <article>
             <span className="line-icon">◫</span>
@@ -205,13 +209,16 @@ export default function Home() {
           </article>
           <article>
             <span className="line-icon">✓</span>
-            <h3>Приёмка по этапам</h3>
-            <p>Заказчик оплачивает выполненный этап после приёмки и подписания акта.</p>
+            <h3>Команда под объект</h3>
+            <p>
+              Евгений собирает состав под задачи и бюджет объекта: отделка,
+              инженерные системы и профильные субподрядчики.
+            </p>
           </article>
           <article className="founder-card">
             <p>Обсудить объект можно напрямую с Евгением Свентием.</p>
             <strong>Евгений Свентий</strong>
-            <span>Руководитель компании «Дзен Ремонт»</span>
+            <span>Руководитель «Дзен Ремонт» · более 13 лет в строительстве</span>
             <TrackedLink href={company.telegram} event="telegram_click" placement="founder">
               Открыть чат с Евгением в Telegram →
             </TrackedLink>

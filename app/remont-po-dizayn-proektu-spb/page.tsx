@@ -44,6 +44,27 @@ export default function Page() {
             </p>
           </aside>
         </section>
+        <section className="section split-section">
+          <div>
+            <p className="eyebrow">Дизайн проекта</p>
+            <h2>Можно прийти с готовым проектом или выбрать дизайнера</h2>
+          </div>
+          <div className="design-paths">
+            <article>
+              <h3>Если проект уже готов</h3>
+              <p>
+                Изучим чертежи, осмотрим помещение и подготовим смету по
+                согласованному составу работ.
+              </p>
+            </article>
+            <article>
+              <h3>Если дизайнера ещё нет</h3>
+              <p>
+                Евгений предложит несколько партнёрских дизайнеров на выбор.
+              </p>
+            </article>
+          </div>
+        </section>
         <section className="section" id="calculator">
           <div className="section-heading">
             <p className="eyebrow">Расчёт</p>
