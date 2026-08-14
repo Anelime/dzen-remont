@@ -74,8 +74,10 @@ export default function ProjectCasePage({ project }: { project: ProjectCase }) {
         publisher: {
           "@type": "Organization",
           name: company.name,
+          legalName: company.legalName,
           url: siteUrl,
           telephone: company.phone,
+          email: company.email,
         },
       },
     ],

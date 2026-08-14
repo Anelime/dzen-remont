@@ -26,7 +26,9 @@ export default function ServiceLanding({ service }: { service: ServiceData }) {
     provider: {
       "@type": "Organization",
       name: company.name,
+      legalName: company.legalName,
       telephone: company.phone,
+      email: company.email,
       url: siteUrl,
     },
   };

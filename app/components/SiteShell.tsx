@@ -83,8 +83,10 @@ export function Footer() {
       <div>
         <h3>Связаться</h3>
         <a href={company.phoneHref}>{company.phone}</a>
+        <a href={company.emailHref}>{company.email}</a>
         <a href={company.telegram}>Открыть чат в Telegram</a>
         <a href={company.whatsapp}>Открыть чат в WhatsApp</a>
+        <p className="footer-legal-name">Исполнитель: {company.legalName}</p>
       </div>
       <div>
         <h3>Документы</h3>

@@ -31,10 +31,12 @@ export default function Page() {
           браузере.
         </p>
         <AnalyticsSettingsLink />
-        <h2>Связаться с нами</h2>
+        <h2>Контакты исполнителя</h2>
+        <p>{company.legalName}</p>
         <p>
-          По вопросам работы сайта позвоните по номеру{" "}
-          <a href={company.phoneHref}>{company.phone}</a> или напишите в{" "}
+          По вопросам ремонта и заявкам позвоните по номеру{" "}
+          <a href={company.phoneHref}>{company.phone}</a>, напишите на почту{" "}
+          <a href={company.emailHref}>{company.email}</a> или откройте{" "}
           <a href={company.telegram}>Telegram</a>.
         </p>
       </main>

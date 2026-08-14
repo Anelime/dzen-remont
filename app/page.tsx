@@ -19,8 +19,10 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: company.name,
+    legalName: company.legalName,
     url: siteUrl,
     telephone: company.phone,
+    email: company.email,
     logo: `${siteUrl}/brand/dzen-mark-512.png`,
     areaServed: { "@type": "City", name: "Санкт-Петербург" },
     knowsAbout: [
@@ -256,7 +258,14 @@ export default function Home() {
             <TrackedLink href={company.telegram} event="telegram_click" placement="final" className="button button-outline-light">
               Открыть чат в Telegram
             </TrackedLink>
+            <TrackedLink href={company.emailHref} event="email_click" placement="final" className="button button-outline-light">
+              Написать на почту
+            </TrackedLink>
           </div>
+          <address className="final-contact-details">
+            <span>Почта для заявок: <a href={company.emailHref}>{company.email}</a></span>
+            <span>Исполнитель: {company.legalName}</span>
+          </address>
         </section>
       </main>
       <Footer />

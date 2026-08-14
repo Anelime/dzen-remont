@@ -45,6 +45,9 @@ test("server-renders the Russian conversion landing page", async () => {
   assert.doesNotMatch(html, /Есть ли дизайн-проект|Шаг 1 из 3/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /Дзен Ремонт/);
+  assert.match(html, /ИП Свентий Евгений Анатольевич/);
+  assert.match(html, /Lake_of_fire@list\.ru/);
+  assert.match(html, /Написать на почту/);
   assert.match(html, /DZEN/);
   assert.match(html, /REMONT/);
   assert.match(html, /С 2012 года/);
@@ -135,6 +138,15 @@ test("server-renders an intent-specific service route", async () => {
   assert.match(html, /Капитальный ремонт квартиры в старом фонде/);
   assert.match(html, /от 45 000/);
   assert.match(html, /\"@type\":\"Service\"/);
+});
+
+test("privacy page contains the verified application contacts", async () => {
+  const response = await render("/privacy");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Контакты исполнителя/);
+  assert.match(html, /ИП Свентий Евгений Анатольевич/);
+  assert.match(html, /Lake_of_fire@list\.ru/);
 });
 
 test("all public routes use the first-party voice", async () => {

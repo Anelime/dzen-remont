@@ -320,6 +320,8 @@ h3 { line-height: 1.15; letter-spacing: -.025em; }
 .final-cta { width: 100%; padding-inline: max(24px, calc((100vw - 1280px) / 2)); background: var(--navy); color: white; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .final-cta h2 { max-width: 940px; }
 .final-cta > p:not(.eyebrow) { color: rgba(255,255,255,.65); font-size: 18px; }
+.final-contact-details { margin-top: 22px; display: grid; gap: 6px; color: rgba(255,255,255,.65); font-size: 13px; font-style: normal; }
+.final-contact-details a { color: white; text-underline-offset: 3px; }
 .site-footer { width: 100%; padding: 68px max(24px, calc((100vw - 1280px) / 2)); background: var(--ink); color: white; display: grid; grid-template-columns: 1.35fr repeat(4, 1fr); gap: 42px; border-top: 1px solid rgba(255,255,255,.14); }
 .site-footer > div { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .brand-footer { margin-bottom: 16px; }
@@ -329,6 +331,7 @@ h3 { line-height: 1.15; letter-spacing: -.025em; }
 .site-footer h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .11em; color: var(--acid); }
 .site-footer p, .site-footer a { color: rgba(255,255,255,.62); font-size: 13px; }
 .site-footer a:hover { color: white; }
+.site-footer .footer-legal-name { max-width: 230px; margin-top: 8px; color: rgba(255,255,255,.48); line-height: 1.45; }
 .footer-settings { padding: 0; border: 0; background: transparent; color: rgba(255,255,255,.62); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; }
 .footer-settings:hover { color: white; }
 .footnote { max-width: 250px; margin-top: 14px; }
